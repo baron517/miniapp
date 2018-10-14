@@ -1,0 +1,10 @@
+/* pages/musicvideopage/musicvideopage.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+#myVideo{
+  height: 430rpx;
+  width: 100%;
+}

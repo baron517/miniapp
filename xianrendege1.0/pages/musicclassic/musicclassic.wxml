@@ -1,0 +1,36 @@
+<!-- 热歌榜单 -->
+<view class='music-top'>
+标题介绍
+</view>
+      <view class='muesic-pick'>
+                       <navigator   class="muesic-list {{state==index?'active-tag':''}}" bindtap="select_date"    wx:for="{{musicList}}" wx:for-item="item" data-key='{{index}}'> 
+            <text class="music-number">{{item.content}}</text>
+             <text class='music-later'>{{item.name}}</text> 
+              <text class="music-jp">{{item.man}}</text> 
+            <image class="music-up" src='{{item.upUrl}}'></image>   
+            <text class="music-num" >{{item.musicNum}}</text>
+            <image class='music-zan' src='https://www.easyicon.net/api/resizeApi.php?id=1153800&size=128' catchtap="zanTap"  data-index="{{index}}"  hidden="{{item.itplay}}" ></image>  
+               <image class='music-zan' src='../../images/zan.png' catchtap="zanTapa" data-index="{{index}}"  hidden="{{!item.itplay}}" ></image> 
+
+            <image class='music-add' src='https://www.easyicon.net/api/resizeApi.php?id=1141668&size=72'  catchtap="addTap"  data-index="{{index}}"  hidden="{{item.itplaying}}"></image> 
+            <image class='music-add' src='../../images/xin.png'  catchtap="addTapa" data-index="{{index}}" hidden="{{!item.itplaying}}"></image>  
+             </navigator>
+
+      </view>
+
+
+      <!-- 音乐播放 -->
+
+     <view class="open-wen">
+       <view class="open-paword">
+          <navigator class=' open-later' url='../Playpage/Playpage' >
+              <image class="open-img" src="../../images/avatar/1.png"></image>
+               <text class='open-name'>歌曲名字</text> 
+               <text class='open-name_'>歌手</text>
+          </navigator>
+          <navigator> <image class="open-img_" bindtap="audioPlay" hidden="{{isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/play.png"></image></navigator>
+          <navigator> <image class="open-img_" bindtap="audioPause" hidden="{{!isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/pause.png"></image></navigator>  
+       </view>
+    
+    </view>
+      <view class='bottom-whi'></view>  

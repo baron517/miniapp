@@ -1,0 +1,196 @@
+ page{
+  background-color:#edf0f3;
+  } 
+
+/* 搜索 */
+.top-sou{
+  margin: 10rpx auto 10rpx ;
+  height: 65rpx;
+  width: 90%;
+background-color:#ffffff;
+border-radius: 20px;
+}
+.input_photo{
+  position: relative;
+  left: 40rpx;
+  top: 15rpx;
+}
+.input_text{
+  font-size: 30rpx;
+  height: 50rpx;
+  width: 80%;
+  position: relative;
+  left: 100rpx;
+  top: -45rpx;
+}
+
+/* 轮播图 */
+.swiper-buttom{
+margin-top:-80rpx;
+  }
+swiper,swiper image {
+  width: 100%;
+  height: 400rpx;
+} 
+
+/* 导航 */
+ .logo-page{
+  /* border-radius: 20rpx; */
+  height: 340rpx;
+  width: 95%;
+  background-color: #fff;
+  margin: 20rpx auto;
+  /* position: relative;
+  top: -10rpx;
+  box-shadow: 10rpx 10rpx 5rpx #888888; */
+  z-index: 1
+} 
+.logo-box{
+  padding-top:20rpx;  
+  height: 150rpx;
+  width: 33.333%;
+  text-align: center;
+  float: left;
+}
+.logo-photo{
+height: 80rpx;
+width: 80rpx;
+margin:0 auto; 
+display: flex;
+flex-flow: row; 
+}
+.logo-text{
+  font-size: 25rpx;
+}
+
+
+/* 新歌推荐 */
+.music-list{
+text-align: center;
+font-family: "微软雅黑";
+/* position: relative;
+top: -10rpx; */
+}
+.music-name{
+margin-top: 10rpx;
+ margin-bottom: 20rpx; 
+display: inline-block;
+font-size: 32rpx;
+font-weight: 500;
+}
+.muesic-list{
+  background-color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 95%;
+   margin:5rpx 2.5% 5rpx ; 
+   position: relative;
+
+}
+.music-later{
+font-size: 35rpx;
+  position: absolute;
+  left: 25%;
+  top: -15rpx;
+}
+.music-number{
+font-size: 40rpx;
+   position: absolute;
+  left: 10%;
+  color: #ccc;
+}
+.music-jp{
+  font-size: 25rpx;
+  position: absolute;
+  left: 25%;
+  top: 25rpx;
+  color: #ccc;
+}
+.bottom-whi{
+  height: 110rpx;
+  width: 100%;
+}
+
+
+/* 音乐播放 */
+.open-wen{
+  height: 100rpx;
+  width: 100%;
+   border-radius: 20rpx 20rpx 0 0; 
+  position: fixed;
+  bottom:0px;
+  background-color:#405f80;
+   /* #405f80 */
+}
+.open-paword{
+position: relative;
+}
+.open-later{
+  /* border: 1px solid #000;   */
+  height: 100rpx;
+  width: 100%;
+}
+.open-img{
+  height: 80rpx;
+  width: 80rpx;
+  position: relative;
+  left: 5%;
+  top: 10%;
+}
+.open-name{
+  display: inline-block;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  font-size: 30rpx;
+}
+.open-name_{
+  display: inline-block;
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  font-size: 20rpx;
+}
+.open-img_{
+  height: 65rpx;
+  width: 65rpx;
+   position: absolute; 
+    left: 86%; 
+    top: 20%;
+}
+.open-img_1{
+  height: 65rpx;
+  width: 65rpx;
+   position: absolute; 
+    left: 87%; 
+    top: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

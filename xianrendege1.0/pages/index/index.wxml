@@ -1,0 +1,55 @@
+<view class="body">
+     
+<!-- 搜索 -->
+   <view class='top-sou'>
+       <icon class='input_photo' size='20' type='search'></icon>
+       <input class='input_text' placeholder="搜索" selection-start="-1" selection-end="-1" cursor="-1" value=""> </input>
+    </view>
+<!-- 广告轮播 -->
+
+     <swiper class="swiper" indicator-dots="true" autoplay="true" circular="{{circular}}" indicator-active-color="#fff" interval="3000" duration="1000">  
+        <block wx:for="{{movies}}" wx:for-index="index">  
+          <swiper-item>  
+            <image src="{{item.image_url}}" class="slide-image" mode="aspectFill"/>  
+          </swiper-item>  
+        </block>  
+      </swiper>  
+
+<!-- 图标导航 -->
+    <view class='logo-page' >
+         <navigator class='logo-box' wx:for="{{photoList}}" wx:for-index="index" url='{{item.musicurl}}' >
+               <image class="logo-photo" src="{{item.url}}"/>  
+               <text class="logo-text"> {{item.name}} </text>
+         </navigator>
+    </view>
+<!-- 歌单 -->
+    <view class='music-list'>
+      <text class='music-name'>— 新歌推荐 —</text>
+      <view class='muesic-pick'>
+
+            <navigator url='../Playpage/Playpage' class='muesic-list'> <text class="music-number">1.</text> <text class='music-later'>歌曲名字</text>  <text class="music-jp">演唱者</text>       </navigator>
+            <navigator url='../Playpage/Playpage' class='muesic-list'> <text class="music-number">2.</text> <text class='music-later'>歌曲名字</text>  <text class="music-jp">演唱者</text>       </navigator>
+            <navigator url='../Playpage/Playpage' class='muesic-list'> <text class="music-number">3.</text> <text class='music-later'>歌曲名字</text>  <text class="music-jp">演唱者</text>      </navigator>
+
+
+
+      </view>
+    </view>
+ 
+<!-- 音乐播放 -->
+
+     <view class="open-wen">
+       <view class="open-paword">
+          <navigator class=' open-later' url='../Playpage/Playpage' >
+              <image class="open-img" src="../../images/avatar/1.png"></image>
+               <text class='open-name'>歌曲名字</text> 
+               <text class='open-name_'>歌手</text>
+          </navigator>
+          <navigator> <image class="open-img_" bindtap="audioPlay" hidden="{{isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/play.png"></image></navigator>
+          <navigator> <image class="open-img_" bindtap="audioPause" hidden="{{!isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/pause.png"></image></navigator>  
+       </view>
+    
+    </view>
+      <view class='bottom-whi'></view>  
+</view>
+

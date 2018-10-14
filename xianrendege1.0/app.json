@@ -1,0 +1,61 @@
+{
+  "pages": [
+ 
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/text/text",
+    "pages/Playpage/Playpage",
+    "pages/musicList/musicList",
+    "pages/musicwhole/musicwhole",
+    "pages/musicclassic/musicclassic",
+    "pages/musicLove/musicLove",
+    "pages/musicdownload/musicdownload",
+    "pages/musicvideo/musicvideo",
+    "pages/musicvideopage/musicvideopage",
+    "pages/ucenter/index/index",
+    "pages/tablook/tablook",
+    "pages/yue/yue"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "听西安",
+        "iconPath": "images/music_1.png",
+        "selectedIconPath": "images/music_2.png",
+        "ackgroundColor":"#bbb"
+      },
+      {
+        "pagePath": "pages/tablook/tablook",
+        "text": "看西安",
+        "iconPath": "images/look_1.png",
+        "selectedIconPath": "images/look_2.png",
+        "ackgroundColor": "#bbb"
+      },
+     {
+            "pagePath": "pages/yue/yue",
+            "text": "悦西安",
+            "iconPath": "images/yue1.png",
+            "selectedIconPath": "images/yue2.png",
+            "ackgroundColor": "#bbb"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "text": "我",
+        "iconPath": "images/me1.png",
+        "selectedIconPath": "images/me2.png",
+        "ackgroundColor": "#bbb"
+      }
+    ]
+  }
+}

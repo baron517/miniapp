@@ -1,0 +1,217 @@
+/* pages/tablook/tablook.wxss */
+/* tab 栏 */
+ page{
+  background-color:#edf0f3;
+  } 
+ .nave{
+height: 80rpx;
+width: 100%;
+  } 
+  .nav{
+  width:100%;
+  height:80rpx;
+  display:flex;
+  flex-direction:row;
+  position: fixed;
+  top: 0;
+  background-color: #edf0f3;
+  z-index: 99;
+  }  
+  .default{
+  line-height:80rpx;
+  text-align:center;
+  width: 50%;
+  color:#000;
+  font-size:28rpx;
+  }  
+  .red{
+  line-height:80rpx;
+  text-align:center;
+  color:#000;
+  width: 50%;
+  font-weight: 700;
+  font-size:28rpx;
+  border-bottom: 4rpx solid #000;
+  }  
+ .hidden{
+  display:none;
+  line-height:200px;
+  } 
+
+
+/* 音乐视频 */
+
+.posts-container{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #ededed;
+  border-top: 1px solid #ededed;
+  position: relative;
+}
+.posts-author-date{
+  margin: 10rpx 0 20rpx 10rpx;
+}
+.posts-author{
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+}
+.posts-date{
+  margin-left: 20rpx;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  font-size: 26rpx;
+}
+.posts-title{
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.posts-image{
+  width: 100%;
+  height: 400rpx;
+}
+.posts-content{
+  color: #fff;
+  font-size: 30rpx;
+  letter-spacing: 5rpx; 
+  position: absolute;
+  top: 430rpx;
+  left: 20rpx;
+}
+.posts-like{
+  font-size: 13px;
+  flex-direction: row;
+  line-height: 16px;
+  margin-left: 10px;
+  margin-top:25rpx; 
+  position: absolute;
+  left: 400rpx;
+
+}
+.posts-like-image{
+  width: 16px;
+  height: 16px;
+  margin-right: 10rpx;
+/* 居中 */
+   vertical-align: middle;   
+  
+}
+.posts-like-font{
+  vertical-align: middle;
+  margin-right: 70rpx;
+}
+.posts-fang{
+  height: 90rpx;
+  width: 90rpx;
+  position: absolute;
+  left: 50%;
+  margin-left:-45rpx; 
+  margin-top:250rpx; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* 耍西安 */
+.swiper-buttom{
+margin-top:-80rpx;
+  }
+swiper,swiper image {
+  width: 100%;
+  height: 400rpx;
+} 
+.post-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #ededed;
+  border-top: 1px solid #ededed;
+  padding-bottom: 5px;
+}
+.post-author-date{
+  margin: 10rpx 0 20rpx 10rpx;
+}
+.post-author{
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+}
+.post-date{
+  margin-left: 20rpx;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  font-size: 26rpx;
+}
+.post-title{
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.post-image{
+  
+  width: 100%;
+  height: 340rpx;
+  margin: auto 0;
+  margin-bottom: 15px;
+}
+.post-content{
+  color: #666;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  letter-spacing: 2rpx;
+  line-height: 40rpx;
+}
+.post-like{
+  font-size: 13px;
+  flex-direction: row;
+  line-height: 16px;
+  margin-left: 10px;
+}
+.post-like-image{
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.post-like-font{
+  vertical-align: middle;
+  margin-right: 20px;
+}

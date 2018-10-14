@@ -1,0 +1,73 @@
+<!--pages/tablook/tablook.wxml-->
+  <view class='nave'>
+     <view class="nav bc_white">
+           <view class="{{selected?'red':'default'}}" bindtap="selected">音乐视频</view>
+           <view class="{{selected1?'red':'default'}}" bindtap="selected1">大美西安</view>
+     </view>
+  </view> 
+ <!-- 音乐视频      -->
+<view class="{{selected?'show':'hidden'}}"> 
+
+<block wx:for="{{local_databases}}" wx:for-item="item">
+    <navigator url=''  class="posts-container">
+      <view class="posts-author-date">
+        <image class="posts-author" src="{{item.avatar}}"></image>
+        <text class="posts-date">{{item.date}}</text>
+      </view>
+
+           <view class="posts-like">
+        <image class="posts-like-image" src="{{item.view_img}}"></image>
+        <text class="posts-like-font">{{item.reading}}</text>
+        <image class="posts-like-image" src="{{item.collect_img}}"></image>
+         <text class="posts-like-font">{{item.collection}}</text> 
+      </view> 
+
+
+       
+      <image class="posts-image" src="{{item.imgSrc}}"></image>
+        <text class="posts-content">{{item.content}}</text> 
+         <image class='posts-fang' src="{{item.biao}}"></image>   
+    </navigator>
+  </block>
+
+
+
+
+
+</view>
+     <!-- 大美西安     -->
+ <view class="{{selected1?'show':'hidden'}}">
+              <view>  
+ <swiper indicator-dots="true" autoplay="true" interval="2000" circular="{{circular}}" indicator-active-color="#fff" >
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper> 
+  
+  <block wx:for="{{local_database}}" wx:for-item="item">
+    <navigator url="../text/text" class="post-container">
+      <view class="post-author-date">
+
+        
+        <image class="post-author" src="{{item.avatar}}"></image>
+        <text class="post-date">{{item.date}}</text>
+      </view>
+      <text class="post-title">{{item.title}}</text>
+      <image class="post-image" src="{{item.imgSrc}}"></image>
+      <text class="post-content">{{item.content}}</text>
+      <view class="post-like">
+
+        <image class="post-like-image" src="{{item.view_img}}"></image>
+        <text class="post-like-font">{{item.reading}}</text>
+        <image class="post-like-image" src="{{item.collect_img}}"></image>
+        <text class="post-like-font">{{item.collection}}</text>
+      </view>
+    </navigator>
+   </block> 
+
+ 
+            </view>           
+</view> 
+

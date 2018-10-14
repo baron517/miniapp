@@ -1,0 +1,133 @@
+/* 热歌排行 */
+page{
+    background-color:#edf0f3;
+}
+.music-top{
+  
+  height: 400rpx;
+  width: 100%;
+  background-color: #fff;
+}
+.muesic-list{
+  background-color: #fff;
+  height: 120rpx;
+  line-height: 120rpx;
+  width: 100%;
+margin-top:5rpx;
+   position: relative;
+
+}
+.music-later{
+font-size: 35rpx;
+  position: absolute;
+  left: 18%;
+  top: -25rpx;
+}
+.music-number{
+  font-size: 35rpx;
+  position: absolute;
+  left: 5%;
+  color: #ccc;
+  margin-top:-25rpx;
+}
+.music-jp{
+  font-size: 25rpx;
+  position: absolute;
+  left: 18%;
+  top: 25rpx;
+  color: #ccc;
+}
+.bottom-whi{
+  height: 110rpx;
+  width: 100%;
+}
+.music-up{
+height: 30rpx;
+width: 30rpx;
+position: absolute;
+top:55rpx;
+left: 70rpx;
+}
+.music-num{
+  font-size: 15rpx;
+  color: #ccc;
+  position: absolute;
+  top: 35rpx;
+  left: 70rpx;
+
+}
+.music-zan{
+height: 35rpx;
+width: 35rpx;
+margin-left:75%;
+z-index: 1
+}
+.music-add{
+height: 35rpx;
+width: 35rpx;
+margin-left:10%;
+z-index: 1
+}
+ .active-tag{
+background-color: #405F80;
+color: #fff;
+
+ }
+
+
+ /* 音乐播放 */
+.open-wen{
+  height: 100rpx;
+  width: 100%;
+   border-radius: 20rpx 20rpx 0 0; 
+  position: fixed;
+  bottom:0px;
+  background-color: #405f80;
+}
+.open-paword{
+position: relative;
+}
+.open-later{
+  /* border: 1px solid #000;   */
+  height: 100rpx;
+  width: 100%;
+}
+.open-img{
+  height: 80rpx;
+  width: 80rpx;
+  position: relative;
+  left: 5%;
+  top: 10%;
+}
+.open-name{
+  display: inline-block;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  font-size: 30rpx;
+}
+.open-name_{
+  display: inline-block;
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  font-size: 20rpx;
+}
+.open-img_{
+  height: 65rpx;
+  width: 65rpx;
+   position: absolute; 
+    left: 86%; 
+    top: 20%;
+}
+.open-img_1{
+  height: 65rpx;
+  width: 65rpx;
+   position: absolute; 
+    left: 87%; 
+    top: 20%;
+}
+.bottom-whi{
+  height: 110rpx;
+  width: 100%;
+}

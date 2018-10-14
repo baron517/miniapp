@@ -1,0 +1,19 @@
+  <view class='nave'>
+     <view class="nav bc_white">
+           <view class="{{selected?'red':'default'}}" bindtap="selected">男歌手</view>
+           <view class="{{selected1?'red':'default'}}" bindtap="selected1">女歌手</view>
+            <view class="{{selected2?'red':'default'}}" bindtap="selected2">乐队</view>
+     </view>
+  </view> 
+ <!-- 男歌手      -->
+<view class="{{selected?'show':'hidden'}}"> 
+男歌手
+</view>
+     <!-- 女歌手    -->
+ <view class="{{selected1?'show':'hidden'}}">
+ 女歌手
+  </view>  
+       <!-- 乐队    -->
+ <view class="{{selected2?'show':'hidden'}}">
+ 乐队
+  </view>  

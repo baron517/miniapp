@@ -1,0 +1,57 @@
+<!--pages/yue/yue.wxml-->
+<view>
+    <view class='nave'>
+     <view class="nav bc_white">
+           <view class="{{selected?'red':'default'}}" bindtap="selected">在线买票</view>
+           <view class="{{selected1?'red':'default'}}" bindtap="selected1">免费获取</view>
+     </view>
+    </view> 
+    <!-- 在线买票 -->
+    <view class="{{selected?'':'hidden'}}">
+      <block wx:for="{{Listmodel}}" wx:for-index="index">  
+       
+          <view class='pageList'>
+              <image class='listphoto' src='{{item.url}}'></image>
+            
+                 <view class='listtext' >
+                     <view class='hande' >{{item.hande}}</view> 
+                     <view class='time' >{{item.time}}</view>
+                     <view class='live' >{{item.live}}</view>
+                     <view class='num' >{{item.num}}</view>
+                 </view>
+
+          </view>
+      </block>  
+
+
+
+    </view>
+
+
+
+     <!-- 免费获取 -->
+    <view class="{{selected1?'':'hidden'}}">
+            
+      <block wx:for="{{Listpage}}" wx:for-index="index">  
+       
+          <view class='pageList'>
+              <image class='listphoto' src='{{item.url}}'></image>
+            
+                 <view class='listtext' >
+                     <view class='hande' >{{item.hande}}</view> 
+                     <view class='time' >{{item.time}}</view>
+                     <view class='live' >{{item.live}}</view>
+                     <view class='num' >{{item.num}}</view>
+                 </view>
+
+          </view>
+      </block>  
+
+
+
+    </view>
+
+
+
+
+</view>

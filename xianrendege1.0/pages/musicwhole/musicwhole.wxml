@@ -1,0 +1,49 @@
+<!-- 全部歌曲 -->
+
+<!-- 搜索 -->
+   <view class='top-sou'>
+       <icon class='input_photo' size='20' type='search'></icon>
+       <input class='input_text' placeholder="搜索" selection-start="-1" selection-end="-1" cursor="-1" value=""> </input>
+    </view>
+<!-- 广告轮播 -->
+
+     <swiper class="swiper" indicator-dots="true" autoplay="true" circular="{{circular}}" indicator-active-color="#fff" interval="3000" duration="1000">  
+        <block wx:for="{{movies}}" wx:for-index="index">  
+          <swiper-item>  
+            <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+          </swiper-item>  
+        </block>  
+      </swiper> 
+
+<!-- 音乐列表 -->
+
+      <view class='muesic-pick'>
+            <navigator  class="muesic-list {{state==index?'active-tag':''}}" bindtap="select_date" data-key='{{index}}'  wx:for="{{musicList}}" wx:for-item="item" > 
+            <text class="music-number">{{item.content}}</text>
+             <text class='music-later'>{{item.name}}</text> 
+              <text class="music-jp">{{item.man}}</text> 
+            <image class='music-zan' src='https://www.easyicon.net/api/resizeApi.php?id=1153800&size=128' catchtap="zanTap"  data-index="{{index}}"  hidden="{{item.itplay}}" ></image>  
+               <image class='music-zan' src='../../images/zan.png' catchtap="zanTapa" data-index="{{index}}"  hidden="{{!item.itplay}}" ></image> 
+
+            <image class='music-add' src='https://www.easyicon.net/api/resizeApi.php?id=1141668&size=72'  catchtap="addTap"  data-index="{{index}}"  hidden="{{item.itplaying}}"></image> 
+            <image class='music-add' src='../../images/xin.png'  catchtap="addTapa" data-index="{{index}}" hidden="{{!item.itplaying}}"></image>  
+             </navigator>
+
+      </view> 
+
+
+<!-- 音乐播放 -->
+
+     <view class="open-wen">
+       <view class="open-paword">
+          <navigator class=' open-later' url='../Playpage/Playpage' >
+              <image class="open-img" src="../../images/avatar/1.png"></image>
+               <text class='open-name'>歌曲名字</text> 
+               <text class='open-name_'>歌手</text>
+          </navigator>
+          <navigator> <image class="open-img_" bindtap="audioPlay" hidden="{{isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/play.png"></image></navigator>
+          <navigator> <image class="open-img_" bindtap="audioPause" hidden="{{!isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/pause.png"></image></navigator>  
+       </view>
+    </view>
+    <view class='bottom-whi'></view>
+      

@@ -1,0 +1,25 @@
+<!--pages/musicList/musicList.wxml-->
+ <view class="container">
+  <navigator   class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{items}}" >
+   <view class="content">
+   <view class='content-num'> {{item.content}}  </view>
+       <text class='content-name'>  {{item.name}}  </text>
+        <text class='content-man'>    {{item.man}}   </text>   
+     </view>
+   <image src='https://www.easyicon.net/api/resizeApi.php?id=1168909&size=128' class="del" catchtap="del" data-index="{{index}}"></image>
+  </navigator>
+ </view>
+<!-- 音乐播放 -->
+     <view class="open-wen">
+       <view class="open-paword">
+          <navigator class=' open-later' url='../Playpage/Playpage' >
+              <image class="open-img" src="../../images/avatar/1.png"></image>
+               <text class='open-name'>歌曲名字</text> 
+               <text class='open-name_'>歌手</text>
+          </navigator>
+          <navigator> <image class="open-img_" bindtap="audioPlay" hidden="{{isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/play.png"></image></navigator>
+          <navigator> <image class="open-img_" bindtap="audioPause" hidden="{{!isplaying}}" src="http://op4j4esv2.bkt.clouddn.com/pause.png"></image></navigator>  
+       </view>
+    
+    </view>
+      <view class='bottom-whi'></view>  
