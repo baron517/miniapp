@@ -15,7 +15,23 @@ Page({
         buy_type: "",
         opendate: !1
     },
+	
+	
     onLoad: function(t) {
+		
+		var access_token=wx.getStorageSync("access_token");
+		console.log("access_token:"+access_token);
+		
+		if(!access_token)
+		{
+			console.log("跳转");
+			wx.redirectTo({
+				url: "/pages/login/login"
+			});
+		}
+		
+		
+		
         app.pageOnLoad(this, t), this.loadData(t);
         var a = 0, e = t.user_id, i = decodeURIComponent(t.scene);
         if (void 0 !== e) a = e; else if (void 0 !== i) a = i; else if (null !== app.query) {
