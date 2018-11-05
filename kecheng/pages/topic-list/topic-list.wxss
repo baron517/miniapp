@@ -17,9 +17,10 @@
 }
 
 .list .item .cover-pic {
-    width: 268rpx;
-    height: 202rpx;
-    margin-left: 10rpx;
+    width: 208rpx;
+    height: 152rpx;
+    margin-right: 20rpx;
+    border-radius: 8rpx;
     display: block;
 }
 
@@ -131,9 +132,7 @@
     background-color: #f5f6f7;
 }
 
-.articles {
-    min-height: calc(100% - 72rpx);
-}
+
 
 .article {
     display: flex;

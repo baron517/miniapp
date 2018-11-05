@@ -5,6 +5,7 @@ Page({
         second: 60
     },
     onLoad: function(n) {
+        console.log(n);
         app.pageOnLoad(this, n);
         var e = this;
         app.request({
@@ -33,6 +34,7 @@ Page({
             title: "授权中"
         }), wx.login({
             success: function(n) {
+                console.log(n);
                 if (n.code) {
                     var e = n.code;
                     app.request({
@@ -44,6 +46,9 @@ Page({
                             code: e
                         },
                         success: function(n) {
+
+                            console.log(n);
+
                             if (0 == n.code) {
                                 var e = a.data.__user_info;
                                 e.binding = n.data.dataObj, wx.setStorageSync("__user_info", e), a.setData({
@@ -52,6 +57,15 @@ Page({
                                     binding: !0,
                                     binding_num: n.data.dataObj
                                 });
+
+                                setTimeout(function()
+                                {
+                                    wx.navigateBack({
+                                        delta: 2
+                                    })
+                                },2000);
+
+
                             } else wx.showToast({
                                 title: "授权失败,请重试"
                             });

@@ -2,20 +2,7 @@
     <include src="/commons/header/header"></include>
     <view class="body after-navber">
         <view class="container">
-            <scroll-view class="nnavbar" scrollIntoView="{{toView}}" scrollLeft="{{scrollNavbarLeft}}" scrollWithAnimation="true" scrollX="true" wx:if="{{navigation}}">
-                <view class="view1">
-                    <view catchtap="onTapNavbar" class="navbar-item " hidden="{{!navigation}}" id="0">
-                        <view class="navbar-item-wrap {{backgrop[0]}}">全部</view>
-                    </view>
-                    <view catchtap="onTapNavbar" class="navbar-item " hidden="{{!navigation}}" id="-1">
-                        <view class="navbar-item-wrap {{backgrop[1]}}">精选</view>
-                    </view>
-                    <view catchtap="onTapNavbar" class="navbar-item " id="{{navbarArray[item].id}}" wx:for="{{navbarShowIndexArray}}" wx:key="{{item.id}}">
-                        <view class="navbar-item-wrap {{navbarArray[item].type}}">{{navbarArray[item].name}}</view>
-                    </view>
-                </view>
-            </scroll-view>
-            <view class="hideview" wx:if="{{navigation}}"></view>
+
             <scroll-view class="articles" hidden="{{articlesHide}}">
                 <include src="/commons/navbar/navbar"></include>
                 <view class="after-navber">
@@ -23,16 +10,19 @@
                         <block wx:for="{{list}}" wx:key="{{item.id}}">
                             <navigator class="item layout-0" url="/pages/topic/topic?id={{item.id}}" wx:if="{{item.layout==0}}">
                                 <view class="flex-row">
-                                    <view class="flex-grow-1 flex-col">
-                                        <view class="flex-grow-1">
-                                            <view class="title">{{item.title}}</view>
-                                        </view>
-                                        <view class="flex-grow-0 read-count">{{item.read_count}}</view>
-                                    </view>
+
                                     <view class="flex-grow-0" style="position: relative">
                                         <image class="cover-pic" mode="aspectFill" src="{{item.cover_pic}}"></image>
                                         <view class="goods-count" wx:if="{{item.goods_count}}">{{item.goods_count}}</view>
                                     </view>
+
+                                    <view class="flex-grow-1 flex-col">
+                                        <view class="flex-grow-1">
+                                            <view class="title">{{item.title}}</view>
+                                        </view>
+                                        <view class="flex-grow-0 read-count"><text style="margin-right:16rpx;">{{item.addtime}}</text> {{item.read_count}}</view>
+                                    </view>
+
                                 </view>
                             </navigator>
                             <navigator class="item layout-1" url="/pages/topic/topic?id={{item.id}}" wx:if="{{item.layout==1}}">

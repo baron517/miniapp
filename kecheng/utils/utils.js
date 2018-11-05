@@ -19,10 +19,19 @@ function objectToUrlParams(t) {
     return r.substr(1);
 }
 
+function formatDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+}
+
 module.exports = {
     formatTime: formatTime,
     objectToUrlParams: objectToUrlParams,
     formatData: formatData,
+    formatDate: formatDate,
     scene_decode: function(t) {
         var r = (t + "").split(","), e = {};
         for (var a in r) {

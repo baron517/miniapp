@@ -1,4 +1,4 @@
-var api = require("../../api.js"), app = getApp();
+var api = require("../../api.js"), utils = require("../../utils/utils.js"),app = getApp();
 
 Page({
     data: {
@@ -48,7 +48,21 @@ Page({
                         page: i.page
                     },
                     success: function(a) {
-                        if (0 == a.code) if (void 0 !== r.data.typeid) {
+
+                        console.log(a);
+
+                        if(a.code==0)
+                        {
+                            for(var i=0;i<a.data.list.length;i++)
+                            {
+
+                                a.data.list[i].addtime=utils.formatDate(a.data.list[i].addtime*1000);
+                            }
+                        }
+
+
+                        if (0 == a.code) if (void 0 !== r.data.typeid)
+                        {
                             for (var t = 0, e = 0; e < r.data.navbarArray.length && (t += 66, r.data.navbarArray[e].id != r.data.typeid); e++) ;
                             r.setData({
                                 scrollNavbarLeft: t
