@@ -29,6 +29,48 @@ Page({
 				url: "/pages/login/login"
 			});
 		}
+		else {
+		    console.log("rs");
+
+            var e = this;
+            e.setData({
+                store: wx.getStorageSync("store")
+            }), app.request({
+                url: api.user.index,
+                success: function(n) {
+
+                    console.log(n.data.user_info);
+
+                    if (0 == n.code) {
+
+                        console.log(n.data.user_info.binding);
+
+
+
+                            wx.setStorageSync("pages_user_user", n.data);
+                            wx.setStorageSync("share_setting", n.data.share_setting);
+                            wx.setStorageSync("user_info", n.data.user_info);
+
+
+                        if(!n.data.user_info.binding)
+                        {
+
+                            wx.navigateTo({
+                                url: "/pages/bangding/bangding"
+                            })
+
+
+                        }
+
+
+                    }
+                }
+            });
+
+
+
+
+        }
 		
 		
 		

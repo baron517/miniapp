@@ -27,7 +27,10 @@ Page({
     },
     onReady: function() {},
     onShow: function() {
+        console.log("show");
+
         app.pageOnShow(this);
+
         this.loadData();
     },
     callTel: function(a) {
