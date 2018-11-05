@@ -156,13 +156,10 @@
             </view>
             <view wx:elif="{{item.name=='cat'}}">
                 <view style="background: #fff;margin-bottom: 10rpx; width:100%;overflow-x: hidden;" wx:if="{{cat.goods_list.length>0}}" wx:for="{{cat_list}}" wx:for-index="cat_index" wx:for-item="cat" wx:key="{{cat.id}}">
-                    <view class="title-bar flex-y-center flex-x-center">
-                        <view class="title-line"></view>
+                    <view class="title-bar flex-y-center">
                         <view class="title flex-y-center">
-                            <image mode="aspectFill" src="{{cat.pic_url}}" wx:if="{{cat.pic_url}}"></image>
                             <text>{{cat.name}}</text>
                         </view>
-                        <view class="title-line"></view>
                         <navigator bindtap="hideGetCoupon" class="flex-y-center" url="/pages/list/list?cat_id={{cat.id}}">
                             <text>更多</text>
                             <image src="{{__wxapp_img.store.jiantou_r.url}}"></image>
@@ -190,7 +187,7 @@
                     <view class="goods-list flex-row goods-list-cols-{{cat_goods_cols}}" wx:else>
                         <view class="flex-grow-0" wx:for="{{cat.goods_list}}" wx:for-index="goods_index" wx:for-item="goods" wx:key="{{goods.id}}">
                             <navigator class="goods-item" url="/pages/goods/goods?id={{goods.id}}">
-                                <image mode="aspectFill" src="{{goods.pic_url}}"></image>
+                                <image  src="{{goods.pic_url}}"></image>
                                 <text class="text-more-2 {{cat_goods_cols==3?'fs-sm':''}}" style="color:#353535;margin-top:15rpx;padding:0 20rpx;">{{goods.name}}
                                     </text>
                                 <text class="goods-price" wx:if="{{cat_goods_cols==3}}">￥{{goods.price}}</text>
@@ -207,12 +204,9 @@
                 <block wx:if="{{item.cat_id==cat.id}}" wx:for="{{cat_list}}" wx:for-index="cat_index" wx:for-item="cat" wx:key="{{cat.id}}">
                     <view style="background: #fff;margin-bottom: 10rpx;width:100%;overflow-x: hidden;" wx:if="{{cat.goods_list.length>0}}">
                         <view class="title-bar flex-y-center flex-x-center">
-                            <view class="title-line"></view>
                             <view class="title flex-y-center">
-                                <image mode="aspectFill" src="{{cat.pic_url}}" wx:if="{{cat.pic_url}}"></image>
                                 <text>{{cat.name}}</text>
                             </view>
-                            <view class="title-line"></view>
                             <navigator bindtap="hideGetCoupon" class="flex-y-center" url="/pages/list/list?cat_id={{cat.id}}">
                                 <text>更多</text>
                                 <image src="{{__wxapp_img.store.jiantou_r.url}}"></image>
