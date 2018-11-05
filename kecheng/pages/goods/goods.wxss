@@ -141,13 +141,7 @@ view {
     box-shadow: 0 1rpx 2rpx rgba(0,0,0,.2);
 }
 
-.goods-image-swiper {
-    height: 750rpx;
-}
 
-.goods-image-swiper image {
-    height: 750rpx;
-}
 
 .goods-image {
     width: 100%;
