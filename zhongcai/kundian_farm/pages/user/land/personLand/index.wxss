@@ -1,0 +1,321 @@
+page {
+    background-color: #f4f4f4;
+}
+
+.orderTitle {
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.block {
+    height: 120rpx;
+}
+
+.item {
+    width: 33.3%;
+    text-align: center;
+    padding: 35rpx 0rpx;
+    color: #3d3d3d;
+    position: relative;
+}
+
+.item::before {
+    content: '';
+    display: block;
+    width: 30%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #16ba63;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.actives {
+    color: #16ba63;
+}
+
+.actives::before {
+    width: 100%;
+    left: 0%;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.item:not(:last-child) view {
+    border-right: 1rpx solid #dfdfdf;
+}
+
+.swiper {
+    width: 100%;
+    height: 350rpx;
+}
+
+.slide-image {
+    width: 100%;
+    height: 430rpx;
+}
+
+.time {
+    color: gray;
+    font-size: 26rpx;
+}
+
+.none {
+    width: 100%;
+    height: 300rpx;
+    text-align: center;
+}
+
+.none image {
+    width: 400rpx;
+    height: 400rpx;
+    margin-top: 60rpx;
+}
+
+.none .tags {
+    color: gray;
+    font-size: 24rpx;
+    display: block;
+}
+
+.none .go-buy {
+    width: 26%;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 20rpx;
+    background: #fc8535;
+    color: white;
+    font-size: 26rpx;
+    margin-left: 37%;
+    margin-top: 20rpx;
+}
+
+.land-ul {
+    width: 96%;
+    margin-left: 2%;
+    border-radius: 10rpx;
+}
+
+.land-ul .land-title {
+    margin-left: 2%;
+    font-size: 30rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #f4f4f4;
+    margin-bottom: 30rpx;
+}
+
+.land-ul .land_status {
+    float: right;
+    margin-right: 20rpx;
+}
+
+.land-ul .seed-ul {
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    margin-top: 20rpx;
+}
+
+.land-ul .seed-ul .seed-title {
+    font-size: 28rpx;
+    float: left;
+    width: 30%;
+    color: gray;
+}
+
+.land-ul .seed-ul .seed-li {
+    width: 70%;
+    float: left;
+}
+
+.land-ul .seed-ul .seed-name {
+    display: block;
+    float: left;
+    padding: 5rpx 20rpx;
+    background: #16ba63;
+    color: white;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.land-ul .seed-ul .seed-dai .seed-name {
+    background: #afaeae;
+}
+
+.land-ul .seed-ul .seed-ke .seed-name {
+    background: #26ac5ea9;
+}
+
+.clear {
+    clear: both;
+}
+
+.state_container {
+    padding: 30rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    text-align: center;
+    justify-content: space-between;
+    border-top: 1rpx solid #f4f4f4;
+}
+
+.item_container {
+    width: 33.3%;
+    letter-spacing: 3rpx;
+}
+
+.title {
+    color: #898989;
+}
+
+.expire {
+    background-color: #fc8535;
+    font-size: 28rpx;
+    width: 150rpx;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    right: -35rpx;
+    top: 20rpx;
+}
+
+.exprice-land {
+    width: 100%;
+    height: 120rpx;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 120rpx;
+}
+
+page {
+    background-color: #efefef;
+}
+
+.orderTitle {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.orderTitle view {
+    padding: 20rpx 0;
+    box-sizing: border-box;
+    width: 25%;
+    text-align: center;
+}
+
+.notcurrentIndex {
+    border-bottom: 3rpx solid #fff;
+}
+
+.currentIndex {
+    border-bottom: 3rpx solid #16BA63;
+    color: #16BA63;
+}
+
+.block100 {
+    height: 100rpx;
+}
+
+.land_item {
+    width: 94%;
+    margin: 0rpx auto 30rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.land_title {
+    height: 100rpx;
+    line-height: 100rpx;
+    position: relative;
+    font-size: 32rpx;
+    color: #090909;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #BBBBBB;
+    overflow: hidden;
+}
+
+.status {
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    width: 200rpx;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    right: -65rpx;
+    top: 15rpx;
+}
+
+.planted {
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.list_content {
+    padding: 30rpx 20rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #BBBBBB;
+}
+
+.plantCate {
+    width: 25%;
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.plantCate view {
+    width: 80%;
+    margin: 0 auto;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+}
+
+.list_wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer {
+    width: 100%;
+    padding: 20rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 28rpx;
+    text-align: center;
+    color: #4D4D4D;
+}
+
+.footer view view:first-child {
+    color: #828282;
+    margin-bottom: 15rpx;
+}
+
+.land_num {
+    font-size: 24rpx;
+    color: gray;
+    margin-left: 20rpx;
+}

@@ -1,0 +1,13 @@
+<view class="con">
+    <view class="ul" wx:for="{{recordData}}" wx:for-item="val">
+        <view class="top">
+            <text class="body">{{val.body}}</text>
+            <text class="price" wx:if="{{val.score_type==1}}">+{{val.score}}</text>
+            <text class="price" wx:else>-{{val.score}}</text>
+        </view>
+        <view class="btn">
+            <text class="time">{{val.create_time}}</text>
+            <text class="total_price">{{val.now_score}}</text>
+        </view>
+    </view>
+</view>

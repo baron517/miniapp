@@ -1,0 +1,40 @@
+<view>
+    <view class="flexSa plr20 f30 orderTitle">
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='1'?'currentIndex':''}}" data-index="1" style="color:{{currentIndex=='1'?farmSetData.background_color:''}};border-bottom:3rpx solid {{currentIndex=='1'?farmSetData.background_color:'white'}}">全部</view>
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='2'?'currentIndex':''}}" data-index="2" style="color:{{currentIndex=='2'?farmSetData.background_color:''}};border-bottom:3rpx solid {{currentIndex=='2'?farmSetData.background_color:'white'}}">待付款</view>
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='3'?'currentIndex':''}}" data-index="3" style="color:{{currentIndex=='3'?farmSetData.background_color:''}};border-bottom:3rpx solid {{currentIndex=='3'?farmSetData.background_color:'white'}}">已付款</view>
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='4'?'currentIndex':''}}" data-index="4" style="color:{{currentIndex=='4'?farmSetData.background_color:''}};border-bottom:3rpx solid {{currentIndex=='4'?farmSetData.background_color:'white'}}">待收货</view>
+    </view>
+    <view class="block"></view>
+    <view class="mainBody" wx:for="{{orderData}}" wx:key="id">
+        <view class="ptl30 brb">
+            <view class="itemType" style="color:{{farmSetData.background_color}}">
+                <text>{{item.status_txt}}</text>
+                <text bindtap="deleteOrder" class="iconfont icon-delete f44 del-order" data-orderid="{{item.id}}" style="color:gray" wx:if="{{item.status_code==3}}"></text>
+                <text bindtap="deleteOrder" class="iconfont icon-delete f44 del-order" data-orderid="{{item.id}}" style="color:gray" wx:if="{{item.status_code==5}}"></text>
+            </view>
+            <view class="flex mt20" wx:for="{{item.order_detail}}" wx:for-item="val">
+                <image class="HeadImg" src="{{val.cover}}"></image>
+                <view class="ml20">
+                    <view class="itemName">{{val.goods_name}}</view>
+                    <view class="flex mt10 f28 cf93">
+                        <block wx:for="{{val.specItem}}" wx:for-item="spec">
+                            <text>{{spec.name}}:</text>
+                            <text class="ml10">{{spec.spec_value}}</text>
+                        </block>
+                    </view>
+                    <view class="cf93">
+                        <text class="f32 cf2b">￥{{val.price}}</text>
+                        <text class="ml20 f26">X{{val.count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btnArr">
+            <button bindtap="cancelOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status==0}}">取消订单</button>
+            <button bindtap="payGroupOrder" class="PayOrder" data-orderid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:if="{{item.status==0}}">付款</button>
+            <button bindtap="applyRefund" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status==6}}">申请退款</button>
+            <button bindtap="sureGoods" class="PayOrder" data-orderid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:if="{{item.status==2}}">确认收货</button>
+        </view>
+    </view>
+</view>

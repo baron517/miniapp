@@ -1,0 +1,237 @@
+@import "../../../components/headline/headline.wxss";
+
+page {
+    background-color: #e9f0f7;
+}
+.hide {display: none;}
+.userBg {
+    width: 100%;
+    height: 400rpx;
+    position: relative;
+}
+
+.contact-btn {
+    width: 140rpx;
+    font-size: 24rpx;
+    position: relative;
+    margin: 0;
+    margin-left: 77%;
+    height: 50rpx;
+    line-height: 50rpx;
+    top: 20rpx;
+    padding: 0;
+    border-radius: 60rpx;
+    overflow: none;
+    background: none;
+    border: 1rpx solid white;
+    color: white;
+}
+
+.contact-btn image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.userBgImg {
+    height: 100%;
+    width: 100%;
+}
+
+.userHead {
+    position: absolute;
+    width: 100%;
+    top: 40rpx;
+    left: 0;
+    z-index: 9999;
+    text-align: center;
+}
+
+.userHeadImg {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+}
+
+.userOrder {
+    position: absolute;
+    z-index: 10000;
+    width: 90%;
+    left: 5%;
+    bottom: -125rpx;
+    height: 250rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    box-shadow: 2rpx 2rpx 20rpx rgba(252,133,53,0.5);
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.listDesc {
+    width: 90%;
+    font-family: Microsoft Yahei;
+    margin: 0rpx auto 0rpx;
+    color: #646464;
+    text-align: center;
+}
+
+.userInfos {
+    margin-top:0rpx;
+}
+
+.infoTop {
+    width: 90%;
+    margin: 30rpx auto 0rpx;
+    background-color: #fff;
+    padding: 0rpx 30rpx;
+    font-size: 30rpx;
+    color: #666666;
+    border-radius: 15rpx;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.leftCircle {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    background-color: #e9f0f7;
+    position: absolute;
+    left: -15rpx;
+    top: 77rpx;
+}
+
+.rightCircle {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    background-color: #e9f0f7;
+    position: absolute;
+    right: -15rpx;
+    top: 77rpx;
+}
+
+.block20 {
+    height: 20rpx;
+}
+
+.userinfo {
+    width: auto;
+    padding: 0 10rpx 0 10rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 24rpx;
+}
+
+.water {
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    opacity: 1;
+    position: absolute;
+    z-index: 99;
+}
+
+.water_show {
+    height: 20%;
+    transition: 3s;
+    transform: translateZ(0);
+}
+
+.water-1,.water-2,.water-3 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.water-1 {
+    height: 100%;
+    opacity: 0.3;
+    background-size: 100%;
+    animation: wave-animation-1 2.5s infinite linear;
+}
+
+.water-2 {
+    height: 100%;
+    opacity: 0.6;
+    background-size: 100%;
+    animation: wave-animation-2 4s infinite ease-in-out;
+}
+
+.water-3 {
+    height: 100%;
+    background-size: 100%;
+    animation: wave-animation-3 6.5s infinite linear;
+}
+
+@keyframes wave-animation-1 {
+    0% {
+        background-position: 0 top;
+    }
+
+    100% {
+        background-position: 600px top;
+    }
+}
+
+@keyframes wave-animation-2 {
+    10% {
+        background-position: 0 top;
+    }
+
+    100% {
+        background-position: 600px top;
+    }
+}
+
+@keyframes wave-animation-3 {
+    20% {
+        background-position: 0 top;
+    }
+
+    100% {
+        background-position: 600px top;
+    }
+}
+
+.order-count {
+    display: block;
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    left: 50rpx;
+    top: 20rpx;
+    color: white;
+    background: linear-gradient(to left,red,orange);
+}
+
+.active {
+    background: white;
+    z-index: -1;
+}
+
+.open-set {
+    width: 100%;
+    background: white;
+    height: 60rpx;
+    padding: 0;
+    margin: 0;
+    line-height: 60rpx;
+    font-size: 32rpx;
+    color: gray;
+}
+
+button::after {
+    border: none;
+}
+
+.set-icon-right {
+    position: relative;
+    bottom: 33px;
+    right: 0;
+    left: 48%;
+}

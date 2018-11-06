@@ -1,0 +1,19 @@
+<view>
+    <form bindsubmit="submitData">
+        <view class="textArea">
+            <textarea class="textAreaStyle" maxlength="-1" name="txt" placeholder="状态跟踪..."></textarea>
+        </view>
+        <view class="img_container">
+            <view class="uploadImg" wx:for="{{imgArr}}" wx:key="id">
+                <image class="imgArr" src="{{item}}"></image>
+                <text bindtap="deleteImg" class="iconfont icon-close f44 delete" data-url="{{item}}" style="color:{{farmSetData.background_color}};"></text>
+            </view>
+            <view class="uploadImg">
+                <image bindtap="addImg" class="imgArr" src="../../../../images/icon/addImg.png"></image>
+            </view>
+        </view>
+        <view class="fabu">
+            <button formType="submit" style="background:{{farmSetData.background_color}}">发布</button>
+        </view>
+    </form>
+</view>

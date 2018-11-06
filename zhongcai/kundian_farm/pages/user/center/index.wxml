@@ -1,0 +1,144 @@
+<view>
+    <view class="userBg" style="background-color:{{back_color}}">
+        <button bindtap="callPhone" class="contact-btn" data-phone="{{aboutData.phone}}" wx:if="{{setData.center_contact_type==2}}">
+            联系客服
+        </button>
+        <button class="contact-btn" openType="contact" wx:else>
+            联系客服
+        </button>
+        <view class="userHead">
+            <image class="userHeadImg" src="{{avatarUrl}}"></image>
+            <view class="flexCenter mt20">
+                <text class="cfff" wx:if="{{nickName}}">{{nickName}}</text>
+                <button bindgetuserinfo="updateUserInfo" class="userinfo" openType="getUserInfo" wx:else>授权获取头像昵称</button>
+                <view class="ml10">
+                    <image class="iconSmall" src="../../../images/icon/synchronization.png" wx:if="{{nickName}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="water water_show wavePosition ">
+            <view class="water-1" style="background: url({{back_img}}) repeat-x;"></view>
+            <view class="water-2" style="background: url({{back_img}}) repeat-x;"></view>
+            <view class="water-3" style="background: url({{back_img}}) repeat-x;"></view>
+        </view>
+        <view class="userOrder hide">
+            <view class="plr20 flex">
+                <text class="iconfont icon-dingdan2 f44" style="color:{{setData.background_color}}"></text>
+                <view class="f30 ml20 cd515151">我的订单</view>
+            </view>
+            <view class="flexSb f30 listDesc">
+                <view bindtap="intoOrder" data-status="1">
+                    <text class="order-count active" wx:if="{{noPayCount==0}}"></text>
+                    <text class="order-count" style="background:linear-gradient(to left,{{setData.background_color}},#abe09e)" wx:else>{{noPayCount}}</text>
+                    <text class="iconfont icon-qianbao f44" style="color:{{setData.background_color}}"></text>
+                    <view class="mt10">待付款</view>
+                </view>
+                <view bindtap="intoOrder" data-status="2">
+                    <text class="order-count active" wx:if="{{peiCount==0}}"></text>
+                    <text class="order-count" style="background:linear-gradient(to left,{{setData.background_color}},#abe09e)" wx:else>{{peiCount}}</text>
+                    <text class="iconfont icon-hezi f44" style="color:{{setData.background_color}}"></text>
+                    <view class="mt10">待配送</view>
+                </view>
+                <view bindtap="intoOrder" data-status="3">
+                    <text class="order-count active" wx:if="{{getCount==0}}"></text>
+                    <text class="order-count" style="background:linear-gradient(to left,{{setData.background_color}},#abe09e)" wx:else>{{getCount}}</text>
+                    <text class="iconfont icon-daishouhuo f44" style="color:{{setData.background_color}}"></text>
+                    <view class="mt10">待收货</view>
+                </view>
+                <view bindtap="intoOrder" data-status="4">
+                    <text class="order-count active"></text>
+                    <text class="iconfont icon-dingdan2 f44" style="color:{{setData.background_color}}"></text>
+                    <view class="mt10">全部订单</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="userInfos">
+        <view class="infoTop">
+            <view bindtap="intoMenuDetail" class="flexSb ptb20 {{key<2?'bb':''}}" data-menutype="{{item.type}}" data-url="{{item.url}}" wx:if="{{key<3}}" wx:for="{{page}}" wx:for-index="key">
+                <view class="flex" wx:if="{{item.type!='center_set'}}">
+                    <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                    <view class="ml20">{{item.name}}</view>
+                </view>
+                <view wx:else>
+                    <button class="open-set" openType="openSetting">
+                        <view class="flex">
+                            <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                            <view class="ml20">设置</view>
+                        </view>
+                    </button>
+                </view>
+                <text class="iconfont icon-right right-icon"></text>
+            </view>
+            <view class="leftCircle"></view>
+            <view class="rightCircle"></view>
+        </view>
+        <view class="infoTop">
+            <view bindtap="intoMenuDetail" class="flexSb ptb20 {{key<5?'bb':''}}" data-menutype="{{item.type}}" data-url="{{item.url}}" wx:if="{{key>=3&&key<6}}" wx:for="{{page}}" wx:for-index="key">
+                <view class="flex" wx:if="{{item.type!='center_set'}}">
+                    <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                    <view class="ml20">{{item.name}}</view>
+                </view>
+                <view wx:else>
+                    <button class="open-set" openType="openSetting">
+                        <view class="flex">
+                            <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                            <view class="ml20">设置</view>
+                        </view>
+                    </button>
+                </view>
+                <text class="iconfont icon-right right-icon"></text>
+            </view>
+            <view class="leftCircle"></view>
+            <view class="rightCircle"></view>
+        </view>
+        <view class="infoTop">
+            <view bindtap="intoMenuDetail" class="flexSb ptb20 {{key<8?'bb':''}}" data-menutype="{{item.type}}" data-url="{{item.url}}" wx:if="{{key>=6&&key<9}}" wx:for="{{page}}" wx:for-index="key">
+                <view class="flex" wx:if="{{item.type!='center_set'}}">
+                    <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                    <view class="ml20">{{item.name}}</view>
+                </view>
+                <view wx:else>
+                    <button class="open-set" openType="openSetting">
+                        <view class="flex">
+                            <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                            <view class="ml20">设置</view>
+                        </view>
+                    </button>
+                </view>
+                <text class="iconfont icon-right right-icon"></text>
+            </view>
+            <view class="leftCircle"></view>
+            <view class="rightCircle"></view>
+        </view>
+        <view class="infoTop">
+            <view bindtap="intoMenuDetail" class="flexSb ptb20 {{key<page.length-1?'bb':''}}" data-menutype="{{item.type}}" data-url="{{item.url}}" wx:if="{{key>=9}}" wx:for="{{page}}" wx:for-index="key">
+                <view class="flex" wx:if="{{item.type!='center_set'}}">
+                    <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                    <view class="ml20">{{item.name}}</view>
+                </view>
+                <view wx:else>
+                    <button class="open-set" openType="openSetting">
+                        <view class="flex">
+                            <text class="iconfont {{item.icon}} f44" style="color:{{setData.background_color}}"></text>
+                            <view class="ml20">设置</view>
+                        </view>
+                    </button>
+                </view>
+                <text class="iconfont icon-right right-icon"></text>
+            </view>
+            <view class="leftCircle"></view>
+            <view class="rightCircle"></view>
+        </view>
+        <view class="infoTop mt30" wx:if="{{is_admin==1}}">
+            <view bindtap="intoAdmin" class="flexSb ptb20">
+                <view class="flex">
+                    <text class="iconfont icon-store f44" style="color:{{setData.background_color}}"></text>
+                    <view class="ml20">商家中心</view>
+                </view>
+                <text class="iconfont icon-right right-icon"></text>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>

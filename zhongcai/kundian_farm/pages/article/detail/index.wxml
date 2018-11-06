@@ -1,0 +1,15 @@
+<view class="con">
+    <view class="title">
+  {{articleDetail.title}}
+  </view>
+    <view class="detail">
+        <text class="time">{{articleDetail.create_time}}</text>
+        <text class="view-count">{{articleDetail.view_count}}人浏览</text>
+    </view>
+</view>
+<import src="../../../../wxParse/wxParse.wxml"></import>
+<view class="content">
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+</view>

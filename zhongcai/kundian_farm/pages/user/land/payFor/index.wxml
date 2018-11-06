@@ -1,0 +1,109 @@
+<view wx:if="{{lands.length>0||selectLand.length>0}}">
+    <view wx:if="{{land_method==2}}">
+        <view class="cf474747 bb">
+            <view class="bgff plt40 flex bb">
+                <image class="iconlager" src="../../../../images/icon/selectIcon.png"></image>
+                <view class="ml30 f30">
+                    <view>您已选择{{landDetail.land_name}}</view>
+                    <view class="cf767676 mt15">
+                        <block wx:for="{{selectLand}}">
+              {{item.area}}㎡
+            </block>
+                    </view>
+                </view>
+            </view>
+            <view class="bgff plt40 flexSb">
+                <image class="iconlager" src="../../../../images/icon/lifeIcon.png"></image>
+                <picker bindchange="bindLimitChange" class="w500 f30 pick-w" range="{{day}}" value="{{currentIndex}}">
+                    <view>租地时间：{{day[currentIndex]}}天</view>
+                </picker>
+                <text bindchange="bindLimitChange" class="iconfont icon-right right-icon"></text>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="cf474747 bb" wx:for="{{lands}}">
+            <view class="bgff plt40 flex bb">
+                <image class="iconlager" src="../../../../images/icon/selectIcon.png"></image>
+                <view class="ml30 f30">
+                    <view>您已选择{{item.land_name}}</view>
+                    <view class="cf767676 mt15">{{item.selectArea}}㎡
+          </view>
+                </view>
+            </view>
+            <view class="bgff plt40 flexSb">
+                <image class="iconlager" src="../../../../images/icon/lifeIcon.png"></image>
+                <picker bindchange="bindPickerChange" class="w500 f30 pick-w" data-id="{{item.id}}" range="{{item.day}}" value="{{index}}">
+                    <view>租地时间：{{item.day[item.select_index]}}天</view>
+                </picker>
+                <text bindchange="bindPickerChange" class="iconfont icon-right right-icon"></text>
+            </view>
+        </view>
+    </view>
+    <view class="p30 flexSb bgff bb">
+        <view>
+            <text class="iconfont icon-youhuiquan1 f44" style="color:{{background_color}};margin-left:10rpx"></text>
+            <text class="f30 new-tag">优惠券：</text>
+        </view>
+        <view bindtap="selectCoupon" class="f32 flex" wx:if="{{couponCount>0}}">
+            <view class="cfred" wx:if="{{userCoupon!=''}}">-￥{{userCoupon.coupon.coupon_price}}</view>
+            <view class="cfred" wx:else>{{couponCount}}张优惠券可用</view>
+            <text class="iconfont icon-right right-icon"></text>
+        </view>
+        <view class="f32 flex" wx:else>
+            <view class="cf93">暂无优惠券</view>
+        </view>
+    </view>
+    <view class="user_container cf474747 f30">
+        <view class="flex p20 borderbottom">
+            <view class="title">用户姓名</view>
+            <view class="ml20">
+                <input bindinput="inputUserName" placeholder="请输入用户姓名" type="text" value="{{userName}}"></input>
+            </view>
+        </view>
+        <view class="flex p20 borderbottom">
+            <view class="title">用户电话</view>
+            <view class="ml20">
+                <input bindinput="inputUserTel" placeholder="请输入用户电话" type="number" value="{{userTel}}"></input>
+            </view>
+        </view>
+        <view class="flex p20 borderbottom">
+            <label>
+                <checkbox catchtap="changeRules" checked="{{rules}}" class="radioBtn" color="#000"></checkbox> 我已阅读并同意
+      </label>
+            <text bindtap="showModal" class="rule-book">《农场协议》</text>
+        </view>
+    </view>
+    <view class="footer f40 flexSb">
+        <view class="flex cffc8535 ml50">
+            <view class="f24 mt10" style="color:{{background_color}}">￥</view>
+            <view style="color:{{background_color}}">{{totalPrice}}</view>
+        </view>
+        <view bindtap="newLandPay" class="payFor" style="background:{{background_color}}" wx:if="{{land_method==2}}">去支付</view>
+        <view bindtap="nowPay" class="payFor" style="background:{{background_color}}" wx:else>去支付</view>
+    </view>
+    <block wx:if="{{state}}">
+        <import src="../../../../../wxParse/wxParse.wxml"></import>
+        <view catchtouchmove="preventTouchMove" class="modal-mask">
+            <view class="modal-dialog">
+                <scroll-view class="dialog_container" scrollY="true">
+                    <view class="modal-title">用户须知</view>
+                    <view>
+                        <view class="content">
+                            <view class="wxParse">
+                                <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view bindtap="hideModal" class="closeModel">
+                    <text class="iconfont icon-close f44" style="color:white;"></text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="txCenter" wx:else>
+    <image class="fishStyle" src="../../../../images/icon/fish.png"></image>
+    <view class="Vegetables">当前没有要购买的地块</view>
+</view>

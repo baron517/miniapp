@@ -1,0 +1,111 @@
+<view wx:if="{{plate==1}}">
+    <view class="land_cpntainer">
+        <view class="flexSa plr20 f30 orderTitle">
+            <view bindtap="changeIndex" class="cd515151" data-index="6" style="color:{{currentIndex=='6'?farmSetData.background_color:''}};">全部</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="0" style="color:{{currentIndex=='0'?farmSetData.background_color:''}};">待种植</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="1" style="color:{{currentIndex=='1'?farmSetData.background_color:''}};">已种植</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="2" style="color:{{currentIndex=='2'?farmSetData.background_color:''}};">已过期</view>
+        </view>
+    </view>
+    <view class="block"></view>
+    <view>
+        <view class="land_item" wx:for="{{landData}}">
+            <view class="expire" style="background:{{farmSetData.background_color}}" wx:if="{{item.status==2}}">已过期</view>
+            <view class="userInfo">
+                <view class="flex" style="width:70%;">
+                    <image class="userAvator" src="{{item.avatar}}" wx:if="{{item.avatar!='undefined'}}"></image>
+                    <image class="userAvator" src="../../../../images/icon/moren.png" wx:else></image>
+                    <view class="userName">{{item.username}}</view>
+                </view>
+                <view class="device_info" wx:if="{{farmSetData.is_open_webthing==1&&item.status==1}}">
+                    <image bindtap="weeding" data-lid="{{item.id}}" src="../../../../images/icon/admin-chucao.png" wx:if="{{item.weeding_tag==1}}"></image>
+                </view>
+            </view>
+            <view bindtap="intoLandDetail" class="landInfo" data-mineid="{{item.id}}">
+                <image class="landAvator" src="{{item.cover}}"></image>
+                <view class="ml30">
+                    <view class="itemName">
+                        <view>{{item.land_name}}</view>
+                        <view class="area">{{item.count}}㎡
+            </view>
+                    </view>
+                    <view class="mt30">
+                        <text class="f20">￥</text>{{item.total_price}}</view>
+                </view>
+            </view>
+            <view class="state_container">
+                <view class="item_container">
+                    <view class="title">状态</view>
+                    <view class="mt20 f30" style="color:{{farmSetData.background_color}}" wx:if="{{item.status==0}}">未种植</view>
+                    <view class="mt20 f30" style="color:{{farmSetData.background_color}}" wx:if="{{item.status==1}}">已种植</view>
+                    <view class="mt20 f30" style="color:{{farmSetData.background_color}}" wx:if="{{item.status==2}}">已过期</view>
+                </view>
+                <view class="item_container">
+                    <view class="title">开始日期</view>
+                    <view class="mt20 f30">{{item.create_time}}</view>
+                </view>
+                <view class="item_container">
+                    <view class="title">到期日期</view>
+                    <view class="mt20 f30">{{item.exprie_time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>
+<view wx:if="{{plate==2}}">
+    <view class="land_cpntainer">
+        <view class="flexSa plr20 f30 orderTitle">
+            <view bindtap="changeIndex" class="cd515151" data-index="6" style="color:{{currentIndex=='6'?farmSetData.background_color:''}};">全部</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="1" style="color:{{currentIndex=='1'?farmSetData.background_color:''}};">准备中</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="2" style="color:{{currentIndex=='2'?farmSetData.background_color:''}};">喂养中</view>
+            <view bindtap="changeIndex" class="cd515151" data-index="4" style="color:{{currentIndex=='4'?farmSetData.background_color:''}};">已成熟</view>
+        </view>
+    </view>
+    <view class="block"></view>
+    <view>
+        <view class="land_item" wx:for="{{animalData}}">
+            <view class="userInfo">
+                <view class="flex" style="width:70%;">
+                    <image class="userAvator" src="{{item.avatar}}" wx:if="{{item.avatar!='undefined'}}"></image>
+                    <image class="userAvator" src="../../../../images/icon/moren.png" wx:else></image>
+                    <view class="userName">{{item.username}}</view>
+                </view>
+                <view class="device_info" wx:if="{{farmSetData.is_open_webthing==1&&item.status==1}}"></view>
+            </view>
+            <view bindtap="intoLandDetail" class="landInfo" data-adoptid="{{item.id}}">
+                <image class="landAvator" src="{{item.cover}}"></image>
+                <view class="ml30">
+                    <view class="itemName">
+                        <view>{{item.animal_name}}</view>
+                        <view class="area">数量 ：1
+            </view>
+                    </view>
+                    <view class="mt30">
+                        <text class="f20">￥</text>{{item.total_price}}</view>
+                </view>
+            </view>
+            <view class="state_container">
+                <view class="item_container">
+                    <view class="title">状态</view>
+                    <view style="color:{{farmSetData.background_color}}">
+                        <view class="mt20 f30" wx:if="{{item.status==1}}">准备中</view>
+                        <view class="mt20 f30" wx:if="{{item.status==2}}">喂养中</view>
+                        <view class="mt20 f30" wx:if="{{item.status==3}}">已死亡</view>
+                        <view class="mt20 f30" wx:if="{{item.status==4}}">已成熟</view>
+                        <view class="mt20 f30" wx:if="{{item.status==5}}">已宰杀</view>
+                    </view>
+                </view>
+                <view class="item_container">
+                    <view class="title">领养时间</view>
+                    <view class="mt20 f30">{{item.create_time}}</view>
+                </view>
+                <view class="item_container">
+                    <view class="title">成熟日期</view>
+                    <view class="mt20 f30">{{item.predict_ripe}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>

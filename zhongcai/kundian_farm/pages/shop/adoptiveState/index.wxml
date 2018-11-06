@@ -1,0 +1,67 @@
+<view>
+    <view class="banner">
+        <swiper autoplay="{{autoplay}}" class="swiper" duration="{{duration}}" indicatorActiveColor="#000" indicatorColor="#7f7f7f" indicatorDots="true" interval="{{interval}}">
+            <swiper-item wx:for="{{animalData.animal_slide}}" wx:key="id">
+                <image class="slide-image" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+        <image bindtap="showVideo" class="monitor" src="../../../images/icon/monitor.png"></image>
+        <video autoplay class="video" src="{{animalData.live_src}}" style="display:{{isShow?'block':'none'}}">
+            <cover-image bindtap="hideVideo" class="monitor" src="../../../images/icon/monitor.png"></cover-image>
+        </video>
+    </view>
+    <view class="block20"></view>
+    <view class="bb mb30">
+        <view class="title bb">成长进度</view>
+        <view class="adoptState" wx:if="{{adoptData.status==4||adoptData.status==2||adoptData.status==5}}">
+            <view class="ptb10">
+          已认养: {{adoptData.adopt_day}}天
+        </view>
+            <progress active activeColor="{{adoptData.status!=3?'{{farmSetData.background_color}}':'#161616'}}" backgroundColor="#8b8b8b" percent="{{between_day}}"></progress>
+            <view class="flexSb plr30 mt10">
+                <view>幼年期</view>
+                <view>成长期</view>
+                <view>成熟期</view>
+            </view>
+        </view>
+        <view class="adoptState" wx:elif="{{adoptData.status==1}}">
+            <view class="ptb10">
+         待喂养
+        </view>
+            <progress active activeColor="{{adoptData.status!=3?'{{farmSetData.background_color}}':'#161616'}}" backgroundColor="#8b8b8b"></progress>
+            <view class="flexSb plr30 mt10" wx:if="{{adoptData.status!=3}}">
+                <view>幼年期</view>
+                <view>成长期</view>
+                <view>成熟期</view>
+            </view>
+        </view>
+        <view class="adoptState" wx:else>
+            <view class="ptb10">已死亡</view>
+            <progress active activeColor="{{adoptData.status!=3?'{{farmSetData.background_color}}':'#161616'}}" backgroundColor="#8b8b8b"></progress>
+            <view class="flexSb plr30 mt10" wx:if="{{adoptData.status!=3}}">
+                <view>幼年期</view>
+                <view>成长期</view>
+                <view>成熟期</view>
+            </view>
+        </view>
+    </view>
+    <view class="timeAxis" wx:for="{{statusData}}">
+        <view class="recodeTime">
+            <view class="reTime">
+                <view class="tiems">
+            {{item.create_time}}
+          </view>
+                <view class="circle"></view>
+            </view>
+        </view>
+        <view class="recodeContent">
+            <view class="reContent">
+                <view wx:if="{{item.txt}}">{{item.txt}}</view>
+                <view class="txCenter mt20">
+                    <image bindtap="preImg" class="{{item.txt?'recodeImg':'recodeBImg'}}" data-index="{{k}}" data-sid="{{item.id}}" src="{{val}}" wx:if="{{val}}" wx:for="{{item.src}}" wx:for-index="k" wx:for-item="val"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <button bindtap="kellSend" class="Slaughter" style="background:{{farmSetData.background_color}}" wx:if="{{adoptData.status==4}}">立即收获</button>
+</view>

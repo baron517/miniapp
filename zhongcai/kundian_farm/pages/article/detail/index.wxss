@@ -1,0 +1,33 @@
+page {
+    font-size: 28rpx;
+}
+
+.con {
+    width: 100%;
+    height: auto;
+    padding-bottom: 20rpx;
+}
+
+.con .title {
+    width: 96%;
+    margin-left: 2%;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.con .detail {
+    width: 96%;
+    margin-left: 2%;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: gray;
+}
+
+.con .detail .view-count {
+    float: right;
+}
+
+.content {
+    width: 96%;
+    margin-left: 2%;
+}
