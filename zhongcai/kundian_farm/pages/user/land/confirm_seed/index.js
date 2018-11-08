@@ -77,7 +77,7 @@ Page({
             },
             success: function(a) {
                 var e = a.data.order_id;
-                /*app.util.request({
+                app.util.request({
                     url: "entry/wxapp/sendPay",
                     data: {
                         orderid: e,
@@ -129,7 +129,7 @@ Page({
                             }
                         });
                     }
-                });*/
+                });
             }
         }) : wx.navigateTo({
             url: "../../../login/index"
