@@ -7,6 +7,7 @@ Page({
         area: 0,
         hidden: !0,
         lid: "",
+        first:1,
         mineLand: [],
         farmSetData: []
     },
@@ -66,19 +67,27 @@ Page({
                 duration: 1000,
                 mask:true
             });
+
             return;
         }
+
 
         var a = this, d = e.currentTarget.dataset.id, t = 0;
         a.data.selectedSeed.map(function(e) {
             t = e.num + t;
         }), a.data.area > t ? a.data.seeds.map(function(e) {
-            if (e.id == d) if (e.selected = !0, 0 == a.data.selectedSeed.length) a.data.selectedSeed.push(e); else {
+            if (e.id == d) if (e.selected = !0, 0 == a.data.selectedSeed.length){
+                a.data.selectedSeed.push(e);
+            }
+            else {
                 var t = !1;
                 a.data.selectedSeed.map(function(e, a) {
                     e.id == d && (e.num += 1, t = !0);
                 }), t || a.data.selectedSeed.push(e);
             }
+
+
+
         }) : a.setData({
             hidden: !1
         }), a.sumPrice();

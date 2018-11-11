@@ -5,11 +5,11 @@
         </view>
         <view class="li-right">
             <text class="seed-anme">{{item.send_name}}</text>
-            <text class="price" style="display: none;">单价：￥{{item.price}}</text>
+            <text class="price">单价：￥{{item.price}}</text>
             <text class="count">数量：×{{item.num}}</text>
         </view>
     </view>
-    <view class="p30 flexSb bgff" style="display: none;">
+    <view class="p30 flexSb bgff">
         <view>
             <text class="iconfont icon-youhuiquan1 f44" style="color:{{farmSetData.background_color}}"></text>
             <text class="f30 new-tag">优惠券：</text>
@@ -26,10 +26,10 @@
 </view>
 <view style="height:20rpx;"></view>
 <view class="footer">
-    <view class="left" style="display: none;">
+    <view class="left">
     订单金额：￥{{totalPrice}}
   </view>
-    <view bindtap="surePay" class="right" style="background:{{farmSetData.background_color}};width:100%;">
-    确认提交
+    <view bindtap="surePay" class="right" style="background:{{farmSetData.background_color}};">
+    确认支付
   </view>
 </view>

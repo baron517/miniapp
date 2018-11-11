@@ -17,7 +17,7 @@
                             <text bindtap="deleteSelect" class="iconfont icon-jianhao errorImg" data-id="{{item.id}}" style="color:{{farmSetData.background_color}}"></text>
                             <view class="addNum" style="border:2rpx solid {{farmSetData.background_color}};color:{{farmSetData.background_color}}">{{item.num}}</view>
                             <image class="seedImgs" src="{{item.cover}}"></image>
-                            <view class="mt10" style="display: none;">￥{{item.totalPrice}}</view>
+                            <view class="mt10">￥{{item.totalPrice}}</view>
                         </view>
                         <view class="mt10">{{item.send_name}}</view>
                     </view>
@@ -33,7 +33,7 @@
                     <view class="seedImg">
                         <image catchtap="checked" class="checkImg" data-id="{{item.id}}" src="{{item.selected?'../../../../images/icon/lightHeart.jpg':'../../../../images/icon/hearts.jpg'}}"></image>
                         <image class="seedImgs" src="{{item.cover}}"></image>
-                        <view class="mt10" style="display: none;">￥{{item.price}}/㎡</view>
+                        <view class="mt10">￥{{item.price}}/㎡</view>
                     </view>
                     <view class="mt10">{{item.send_name}}</view>
                 </view>

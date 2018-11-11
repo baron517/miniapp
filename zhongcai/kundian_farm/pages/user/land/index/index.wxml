@@ -131,7 +131,7 @@
                             <text bindtap="deletes" class="iconfont icon-jianhao errorImg" data-id="{{item.id}}" style="color:{{farmSetData.background_color}}"></text>
                             <view bindtap="addNum" class="addNum" data-id="{{item.id}}" style="color:{{farmSetData.background_color}};border:2rpx solid {{farmSetData.background_color}}">{{item.num}}</view>
                             <image class="seedImgs" src="{{item.cover}}"></image>
-                            <view style="display: none;">￥{{item.price}}</view>
+                            <view>￥{{item.price}}</view>
                         </view>
                         <view class="mt10">{{item.name}}</view>
                     </view>
@@ -157,8 +157,8 @@
                 </view>
                 <view class="buyNum" hidden="{{seedCount==0}}" style="background:{{farmSetData.background_color}}">{{seedCount}}</view>
             </view>
-            <view class="sumPrice" style="display: none;" wx:if="{{sumPrice}}">￥{{sumPrice}}</view>
-            <view bindtap="nowPay"  class="Settlement {{seeds.length>0?'bgfc8535':'bgdadada'}}" style="width:550rpx;background:{{farmSetData.background_color}}">提交</view>
+            <view class="sumPrice" wx:if="{{sumPrice}}">￥{{sumPrice}}</view>
+            <view bindtap="nowPay" class="Settlement {{seeds.length>0?'bgfc8535':'bgdadada'}}" style="background:{{farmSetData.background_color}}">去结算</view>
         </view>
     </view>
     <view wx:if="{{farmSetData.is_open_webthing==1&&mineLand.device_id}}">

@@ -109,6 +109,12 @@
                 "selectedIconPath": "kundian_farm/images/tabbar/selectcate.png"
             },
             {
+                "pagePath": "kundian_farm/pages/distribution/index/index",
+                "text": "分销",
+                "iconPath": "kundian_farm/images/tabbar/shop.png",
+                "selectedIconPath": "kundian_farm/images/tabbar/selectshop.png"
+            },
+            {
                 "pagePath": "kundian_farm/pages/user/center/index",
                 "text": "我的",
                 "iconPath": "kundian_farm/images/tabbar/user.png",
