@@ -112,7 +112,7 @@
                 "pagePath": "kundian_farm/pages/distribution/index/index",
                 "text": "分销",
                 "iconPath": "kundian_farm/images/tabbar/shop.png",
-                "selectedIconPath": "kundian_farm/images/tabbar/selectshop.png"
+                "selectedIconPath": "kundian_farm/images/tabbar/selectShop.png"
             },
             {
                 "pagePath": "kundian_farm/pages/user/center/index",
