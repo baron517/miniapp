@@ -142,6 +142,16 @@ Page({
             url: api.default.topic_list,
             data: t,
             success: function(a) {
+
+                if(a.code==0)
+                {
+                    for(var i=0;i<a.data.list.length;i++)
+                    {
+
+                        a.data.list[i].addtime=utils.formatDate(a.data.list[i].addtime*1000);
+                    }
+                }
+
                 0 == a.code && (t.reload && e.setData({
                     list: a.data.list,
                     page: t.page,
