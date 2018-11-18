@@ -1,0 +1,17 @@
+<include src="/commons/navbar/navbar"></include>
+<view class="after-navber">
+    <view class="info">
+        <view class="info-list">
+            <view class="info-content" wx:for="{{video_list}}" wx:key="{{item.id}}">
+                <view class="info-bg">
+                    <view class="info-video">
+                        <image bindtap="play" class="bg {{show_video==index?hide:''}}" data-index="{{index}}" src="{{item.pic_url}}"></image>
+                        <image bindtap="play" class="play {{show_video==index?hide:''}}" data-index="{{index}}" src="{{__wxapp_img.store.video_play.url}}"></image>
+                        <video autoplay="true" class="{{show_video==index?'':hide}}" controls="controls" id="video_{{index}}" src="{{item.url}}" wx:if="{{show_video==index}}"></video>
+                    </view>
+
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

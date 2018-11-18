@@ -20,6 +20,9 @@ Page({
                 order_id: t.id
             },
             success: function(t) {
+
+                console.log(t);
+
                 0 == t.code && a.setData({
                     order: t.data
                 });

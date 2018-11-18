@@ -32,6 +32,7 @@
         "pages/coupon/coupon",
         "pages/clerk/clerk",
         "pages/video/video-list",
+        "pages/order-video/video-list",
         "pages/coupon-list/coupon-list",
         "pages/topic-list/topic-list",
         "pages/topic/topic",
