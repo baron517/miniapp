@@ -2,7 +2,7 @@
 <view class="after-navber">
     <view class="info">
 
-        <video autoplay="true"  controls="controls" src="{{url}}"></video>
+        <audio  autoplay="true"  controls="controls" src="{{url}}"></audio>
 
     </view>
 </view>

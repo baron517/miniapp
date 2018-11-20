@@ -28,6 +28,9 @@ Page({
                 status: e.data.status
             },
             success: function(t) {
+
+                console.log(t.data.list[0].goods_list);
+
                 0 == t.code && (e.setData({
                     order_list: t.data.list,
                     pay_type_list: t.data.pay_type_list

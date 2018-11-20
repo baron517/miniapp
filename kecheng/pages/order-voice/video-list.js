@@ -12,6 +12,8 @@ Page({
     onLoad: function(a) {
         app.pageOnLoad(this, a);
 
+        console.log(a);
+
         this.setData({
             url: a.id
         });
