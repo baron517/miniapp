@@ -549,7 +549,7 @@
             <view class="title flex-y-center">
                 <text>新闻资讯</text>
             </view>
-            <navigator bindtap="hideGetCoupon" class="flex-y-center" url="/pages/topic-list/topic-list?type=1">
+            <navigator bindtap="hideGetCoupon" class="flex-y-center" url="/pages/zixun-list/topic-list?type=1">
                 <text>更多</text>
                 <image src="{{__wxapp_img.store.jiantou_r.url}}"></image>
             </navigator>
