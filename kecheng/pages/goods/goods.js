@@ -39,11 +39,13 @@ Page({
         goodNumCount: 0
     },
     onLoad: function(t) {
+        console.log("#####");
         var a = this;
         app.pageOnLoad(this, t), share_count = 0, is_more_comment = !(is_loading_comment = !(p = 1));
         var o = t.quick;
         if (o) {
             var i = wx.getStorageSync("item");
+            console.log(i);
             if (i) var s = i.total, e = i.carGoods; else s = {
                 total_price: 0,
                 total_num: 0
@@ -106,6 +108,8 @@ Page({
                 id: o.data.id
             },
             success: function(t) {
+                console.log("商品详情");
+                console.log(t);
                 if (0 == t.code) {
                     var a = t.data.detail;
                     WxParse.wxParse("detail", "html", a, o), o.setData({
