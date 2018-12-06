@@ -13,6 +13,7 @@ Page({
     },
     onLoad: function(a) {
         var t = a.type;
+        console.log(a);
         void 0 !== t && t && this.setData({
             typeid: t
         }), this.systemInfo = wx.getSystemInfoSync(), app.pageOnLoad(this, a);

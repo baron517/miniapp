@@ -302,12 +302,15 @@
             </view>
 
             <view class="flex-grow-1 flex-row" wx:if="{{goods.price==0}}">
-                <navigator  class="flex-grow-1 flex-y-center flex-x-center add-cart" url="/pages/order-video/video-list?id={{goods.g_url}}" wx:if="{{goods.g_type==1}}">
-                    观看视频
-                </navigator>
+
                 <navigator  class="flex-grow-1 flex-y-center flex-x-center add-cart" url="/pages/order-voice/video-list?id={{goods.g_url}}" wx:if="{{goods.g_type==2}}">
                     收听音频
                 </navigator>
+
+                <navigator  class="flex-grow-1 flex-y-center flex-x-center add-cart" url="/pages/order-video/video-list?id={{goods.g_url}}" wx:if="{{goods.g_type==3}}">
+                    观看视频
+                </navigator>
+
             </view>
 
            <view class="flex-grow-1 flex-row" wx:if="{{goods.price!=0}}">
