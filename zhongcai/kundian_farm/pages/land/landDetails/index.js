@@ -75,11 +75,17 @@ Page({
     },
     getTotalPrice: function(a) {
         var t = this.data.landSpec, e = this.data.landLimit, i = 0;
+
         t.map(function(a) {
-            a.select && (i = parseFloat(i) + a.price * e.day);
+
+            a.select && (i = parseFloat(i) + parseFloat(a.price));
+
+            console.log(i);
+
         }), this.setData({
             total_price: i.toFixed(2)
         });
+
     },
     toPay: function(a) {
         var t = this.data.landDetail, e = this.data.landSpec, i = new Array();

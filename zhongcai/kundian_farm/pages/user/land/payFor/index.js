@@ -105,7 +105,7 @@ Page({
         if (2 == t) {
             var i = this.data.selectLand, o = this.data.currentIndex;
             i.map(function(a) {
-                e = parseFloat(e) + a.price * n[o].day;
+                e = parseFloat(e) + a.price;
             }), a.setData({
                 totalPrice: parseFloat(e).toFixed(2),
                 copyTotalPrice: parseFloat(e).toFixed(2)
