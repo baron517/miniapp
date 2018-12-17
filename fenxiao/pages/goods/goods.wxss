@@ -714,3 +714,6 @@ view {
     font-size: 13px;
     color: #707070;
 }
+
+.wxParse-p image{display:inline-block!important;}
+
