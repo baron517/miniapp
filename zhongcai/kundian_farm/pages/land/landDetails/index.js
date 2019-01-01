@@ -21,6 +21,17 @@ Page({
                 lid: t
             },
             success: function(a) {
+
+                if(a.data.landSpec.length>0)
+                {
+                    for(var i=0;i<a.data.landSpec.length;i++)
+                    {
+                        a.data.landSpec[i].land_num= a.data.landSpec[i].land_num.split("_")[1];
+                    }
+                }
+
+                console.log(a);
+
                 var t = 0;
                 -1 < app.globalData.sysData.model.indexOf("iPhone X") && (t = 68), e.setData({
                     landDetail: a.data.landDetail,

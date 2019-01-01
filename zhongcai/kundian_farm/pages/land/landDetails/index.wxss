@@ -171,6 +171,8 @@ page .wx-swiper-dots {
     z-index: 100;
 }
 
+.land_list .list_item .text{font-size:24rpx;width:100%;text-align: center;color:#333;}
+
 .radioStyle {
     transform: scale(.8);
     margin: 0 auto;

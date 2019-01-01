@@ -65,6 +65,9 @@
                     <radio catchtap="select" checked="{{item.select}}" color="#77d682" data-id="{{item.id}}" wx:if="{{item.status}}"></radio>
                     <radio checked="{{item.select}}" color="#77d682" style="visibility:hidden" wx:else></radio>
                 </block>
+
+                 <view class="text">{{item.land_num}}</view>
+
             </view>
         </scroll-view>
     </view>
