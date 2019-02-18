@@ -1,0 +1,144 @@
+<view wx:if="{{plate==1}}">
+    <view class="container">
+        <view class="flexSa mt30">
+            <view>
+                <view class="title_name" style="color:{{farmSetData.background_color}}">{{landDetail.count}}㎡</view>
+                <view class="title_desc">当前面积</view>
+            </view>
+            <view>
+                <view class="title_name" style="color:{{farmSetData.background_color}}">{{landDetail.exprie_time}}</view>
+                <view class="title_desc">到期时间</view>
+            </view>
+        </view>
+        <view class="orderInfo_container" style="border-top:1rpx dashed {{farmSetData.background_color}};border-bottom:1rpx dashed {{farmSetData.background_color}}">
+            <view class="flex mt30">
+                <view class="head">订单状态：</view>
+                <view>已支付</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">订单号：</view>
+                <view>{{landDetail.order_number}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系人：</view>
+                <view>{{landDetail.username}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系号码：</view>
+                <view>{{landDetail.phone}}</view>
+            </view>
+            <view bindtap="releases" class="upload" style="background:{{farmSetData.background_color}}" wx:if="{{landDetail.status!=0}}">
+                <view class="flexCenter mt20">
+                    <text class="iconfont icon-add3 f44" style="color:white"></text>
+                    <view class="ml10">上传种植动态</view>
+                </view>
+                <view class="mt10 f30">
+                    <view>点击添加照片及动态</view>
+                </view>
+            </view>
+        </view>
+        <view class="seed_container" wx:if="{{seedOrder!=''}}">
+            <view class="seed_title">已购种子订单</view>
+            <view class="borderBottom">
+                <view bindtap="release" class="seed_item" data-id="{{item.id}}" wx:for="{{seedOrder.orderDetail}}">
+                    <view class="seedImg">
+                        <image src="{{item.cover}}"></image>
+                    </view>
+                    <view class="seedInfo">
+                        <view class="seedName">{{item.send_name}}</view>
+                        <view class="mt20">x{{item.count}}</view>
+                        <view class="mt20">
+                            <text class="f20">￥</text>{{item.price}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="total">
+                <view class="total_title">总价:</view>
+                <view class="total_title ml20">
+                    <text class="f20">￥</text>{{seedOrder.total_price}}<text class="f30"></text>
+                </view>
+            </view>
+            <view class="payTime">
+                <view>支付时间：</view>
+                <view>{{seedOrder.pay_time}}</view>
+            </view>
+            <view class="payTime">
+                <view>支付方式：</view>
+                <view>{{seedOrder.pay_method}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>
+<view wx:if="{{plate==2}}">
+    <view class="container">
+        <view class="flexSa mt30">
+            <view>
+                <view class="title_name" style="color:{{farmSetData.background_color}}">{{animalData.num}}</view>
+                <view class="title_desc">当前数量</view>
+            </view>
+            <view>
+                <view class="title_name" style="color:{{farmSetData.background_color}}">{{animalData.predict_ripe}}</view>
+                <view class="title_desc">预计成熟时间</view>
+            </view>
+        </view>
+        <view class="orderInfo_container" style="border-top:1rpx dashed {{farmSetData.background_color}};border-bottom:1rpx dashed {{farmSetData.background_color}}">
+            <view class="flex mt30">
+                <view class="head">订单状态：</view>
+                <view>已支付</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">订单号：</view>
+                <view>{{animalOrder.order_number}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系人：</view>
+                <view>{{animalOrder.username}}</view>
+            </view>
+            <view class="flex mt30">
+                <view class="head">联系号码：</view>
+                <view>{{animalOrder.phone}}</view>
+            </view>
+            <view bindtap="releases" class="upload" style="background:{{farmSetData.background_color}}" wx:if="{{landDetail.status!=0}}">
+                <view class="flexCenter mt20">
+                    <text class="iconfont icon-add3 f44" style="color:white"></text>
+                    <view class="ml10">上传认养动态</view>
+                </view>
+                <view class="mt10 f30">
+                    <view>点击添加照片及动态</view>
+                </view>
+            </view>
+        </view>
+        <view class="seed_container" wx:if="{{seedOrder!=''}}">
+            <view class="seed_title">已认养订单</view>
+            <view class="borderBottom">
+                <view bindtap="release" class="seed_item">
+                    <view class="seedImg">
+                        <image src="{{animalOrder.cover}}"></image>
+                    </view>
+                    <view class="seedInfo">
+                        <view class="seedName">{{animalOrder.animal_name}}</view>
+                        <view class="mt20">x{{animalOrder.count}}</view>
+                        <view class="mt20">
+                            <text class="f20">￥</text>{{animalOrder.price}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="total">
+                <view class="total_title">总价:</view>
+                <view class="total_title ml20">
+                    <text class="f20">￥</text>{{animalOrder.total_price}}<text class="f30"></text>
+                </view>
+            </view>
+            <view class="payTime">
+                <view>下单时间：</view>
+                <view>{{animalOrder.create_time}}</view>
+            </view>
+            <view class="payTime">
+                <view>支付方式：</view>
+                <view>{{animalOrder.pay_method}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+</view>

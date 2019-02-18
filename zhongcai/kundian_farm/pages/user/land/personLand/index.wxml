@@ -1,0 +1,106 @@
+<view wx:if="{{landData}}">
+    <view class="flexSa f30 orderTitle">
+        <view bindtap="changeState" class="cd515151 {{currentState=='1'?'currentIndex':'notcurrentIndex'}}" data-state="1">全部</view>
+        <view bindtap="changeState" class="cd515151 {{currentState=='2'?'currentIndex':'notcurrentIndex'}}" data-state="2">未种植</view>
+        <view bindtap="changeState" class="cd515151 {{currentState=='3'?'currentIndex':'notcurrentIndex'}}" data-state="3">种植中</view>
+        <view bindtap="changeState" class="cd515151 {{currentState=='4'?'currentIndex':'notcurrentIndex'}}" data-state="4">已过期</view>
+    </view>
+    <view class="block100"></view>
+    <view bindtap="intoMineLandDetail" class="land_item" data-landstatus="{{item.status}}" data-lid="{{item.id}}" wx:for="{{landData}}" wx:key="id">
+        <block wx:if="{{item.status==0}}">
+            <view class="land_title">
+                <view>{{item.land_name}}<text class="land_num">  编号：{{item.land_num}}</text>
+                </view>
+                <view class="status" style="background:#38DC85">未种植</view>
+            </view>
+            <view class="list_content">
+                <view class="planted" style="color:#B0B0B0">可种植作物:</view>
+                <view class="list_wrapper">
+                    <view class="plantCate" wx:for="{{item.ke_seed}}" wx:for-item="seed">
+                        <view style="background:#70C896">{{seed.send_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="footer">
+                <view>
+                    <view>面积</view>
+                    <view style="color:#16BA63">{{item.count}}㎡</view>
+                </view>
+                <view>
+                    <view>开始日期</view>
+                    <view>{{item.create_time}}</view>
+                </view>
+                <view>
+                    <view>结束日期</view>
+                    <view>{{item.exprie_time}}</view>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{item.status==1}}">
+            <view class="land_title">
+                <view>{{item.land_name}}<text class="land_num">  编号：{{item.land_num}}</text>
+                </view>
+                <view class="status" style="background:#16BA63">种植中</view>
+            </view>
+            <view class="list_content">
+                <view class="planted" style="color:#16BA63">已种植作物:</view>
+                <view class="list_wrapper">
+                    <view class="plantCate" wx:for="{{item.is_seed}}" wx:for-item="seed">
+                        <view style="background:#70C896">{{seed.send_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="footer">
+                <view>
+                    <view>面积</view>
+                    <view style="color:#16BA63">{{item.count}}㎡</view>
+                </view>
+                <view>
+                    <view>开始日期</view>
+                    <view>{{item.create_time}}</view>
+                </view>
+                <view>
+                    <view>结束日期</view>
+                    <view>{{item.exprie_time}}</view>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{item.status==2}}">
+            <view class="land_title">
+                <view>{{item.land_name}}<text class="land_num">  编号：{{item.land_num}}</text>
+                </view>
+                <view class="status" style="background:#8A8A8A">已过期</view>
+            </view>
+            <view class="list_content">
+                <view class="planted" style="color:#B0B0B0">可种植作物:</view>
+                <view class="list_wrapper">
+                    <view class="plantCate" wx:for="{{item.ke_seed}}" wx:for-item="seed">
+                        <view style="background:#8A8A8A">{{seed.send_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="footer">
+                <view>
+                    <view>面积</view>
+                    <view>{{item.count}}㎡</view>
+                </view>
+                <view>
+                    <view>开始日期</view>
+                    <view>{{item.create_time}}</view>
+                </view>
+                <view>
+                    <view>结束日期</view>
+                    <view>{{item.exprie_time}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="block20"></view>
+</view>
+<view wx:else>
+    <view class="none">
+        <image src="../../../../images/icon/fish.png"></image>
+        <text class="tags">暂时还没有租地哦</text>
+        <view bindtap="gotoBuy" class="go-buy" style="background:{{farmSetData.background_color}}">前 去 租 地</view>
+    </view>
+</view>

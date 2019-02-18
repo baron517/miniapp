@@ -1,4 +1,4 @@
-var api = require("../../api.js"), app = getApp();
+var api = require("../../api.js"), utils = require("../../utils/utils.js"),app = getApp();
 
 Page({
     data: {
@@ -12,7 +12,8 @@ Page({
         articlesHide: !1
     },
     onLoad: function(a) {
-        var t = a.type;
+        var t = 2;
+        console.log(a);
         void 0 !== t && t && this.setData({
             typeid: t
         }), this.systemInfo = wx.getSystemInfoSync(), app.pageOnLoad(this, a);
@@ -48,24 +49,46 @@ Page({
                         page: i.page
                     },
                     success: function(a) {
-                        if (0 == a.code) if (void 0 !== r.data.typeid) {
-                            for (var t = 0, e = 0; e < r.data.navbarArray.length && (t += 66, r.data.navbarArray[e].id != r.data.typeid); e++) ;
-                            r.setData({
-                                scrollNavbarLeft: t
-                            }), r.switchChannel(parseInt(r.data.typeid)), r.sortTopic({
-                                page: 1,
-                                type: r.data.typeid,
-                                reload: !0
-                            });
-                        } else i.reload && r.setData({
-                            list: a.data.list,
-                            page: i.page,
-                            is_more: 0 < a.data.list.length
-                        }), i.loadmore && r.setData({
-                            list: r.data.list.concat(a.data.list),
-                            page: i.page,
-                            is_more: 0 < a.data.list.length
-                        });
+
+                        console.log(a);
+
+                        if(a.code==0)
+                        {
+                            for(var i=0;i<a.data.list.length;i++)
+                            {
+
+                                a.data.list[i].addtime=utils.formatDate(a.data.list[i].addtime*1000);
+                            }
+                        }
+
+
+                        if (0 == a.code)
+                        {
+                            if (void 0 !== r.data.typeid)
+                            {
+                                for (var t = 0, e = 0; e < r.data.navbarArray.length && (t += 66, r.data.navbarArray[e].id != r.data.typeid); e++) ;
+                                r.setData({
+                                    scrollNavbarLeft: t
+                                }), r.switchChannel(parseInt(r.data.typeid)), r.sortTopic({
+                                    page: 1,
+                                    type: r.data.typeid,
+                                    reload: !0
+                                });
+                            }
+                            else {
+                                i.reload && r.setData({
+                                    list: a.data.list,
+                                    page: i.page,
+                                    is_more: 0 < a.data.list.length
+                                }), i.loadmore && r.setData({
+                                    list: r.data.list.concat(a.data.list),
+                                    page: i.page,
+                                    is_more: 0 < a.data.list.length
+                                });
+                            }
+                        }
+
+
                     },
                     complete: function() {
                         r.setData({
@@ -128,6 +151,16 @@ Page({
             url: api.default.topic_list,
             data: t,
             success: function(a) {
+
+                if(a.code==0)
+                {
+                    for(var i=0;i<a.data.list.length;i++)
+                    {
+
+                        a.data.list[i].addtime=utils.formatDate(a.data.list[i].addtime*1000);
+                    }
+                }
+
                 0 == a.code && (t.reload && e.setData({
                     list: a.data.list,
                     page: t.page,

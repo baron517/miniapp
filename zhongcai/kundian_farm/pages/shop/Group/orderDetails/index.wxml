@@ -1,0 +1,94 @@
+<view>
+    <view>
+        <view class="line mb10" style="background:url({{borderImg}})"></view>
+        <view class="p20">
+            <view class="flexSb  f32">
+                <view class="flex">
+                    <text class="iconfont icon-yonghu f44" style="color:{{farmSetData.background_color}}"></text>
+                    <view class="ml10">{{orderData.name}}</view>
+                </view>
+                <view class="flex">
+                    <text class="iconfont icon-phone f44" style="color:{{farmSetData.background_color}}"></text>
+                    <view class="ml10">{{orderData.phone}}</view>
+                </view>
+            </view>
+            <view class="f30 cf7e7e7e mt20">{{orderData.address}}</view>
+        </view>
+        <view class="line mt10" style="background:url({{borderImg}})"></view>
+    </view>
+    <view class="block20"></view>
+    <view class="bgff p20">
+        <view class="flex ptb20" wx:for="{{orderDetail}}" wx:key="id">
+            <image class="headImg" src="{{item.cover}}"></image>
+            <view class="ml20">
+                <view class="itemName">{{item.goods_name}}</view>
+                <view class="f26 mt10 cf93">
+                    <block wx:for="{{item.specItem}}" wx:for-item="val">
+                        <text>{{val.name}}:</text>
+                        <text class="ml10">{{val.spec_value}};</text>
+                    </block>
+                    <text class="ml10">X{{item.count}};</text>
+                </view>
+                <view>
+                    <text class="f26">￥{{item.price}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="block20"></view>
+    <view class="flex ptl30 f30 bb">
+        <view>买家留言:</view>
+        <view class="ml10" wx:if="{{orderData.remark}}">{{orderData.remark}}</view>
+        <view class="ml10" wx:else>无</view>
+    </view>
+    <view class="ptl30 f30 bb">
+        <view class="flexSb  f34">
+            <view>支付状态</view>
+            <view class="fb cfred" wx:if="{{orderData.status==0}}">未支付</view>
+            <view class="fb cfred" wx:if="{{orderData.status==1}}">已支付</view>
+        </view>
+        <view class="flex mt20">
+            <view class="cf93">支付方式：</view>
+            <view class="ml10">{{orderData.pay_method}}</view>
+        </view>
+        <view class="flex mt20">
+            <view class="cf93">下单时间：</view>
+            <view class="ml10">{{orderData.create_time}}</view>
+        </view>
+        <view class="flex mt20">
+            <view class="cf93">支付时间：</view>
+            <view class="ml10">{{orderData.pay_time}}</view>
+        </view>
+    </view>
+    <view class="ptl30 f30 bb">
+        <view class="flexSb  f34">
+            <view>配送信息</view>
+            <view class="fb cfred" wx:if="{{orderData.is_send==0}}">未发货</view>
+            <view class="fb cfred" wx:if="{{orderData.is_send==1}}">已发货</view>
+        </view>
+        <view class="flex mt20">
+            <view class="cf93">快递公司：</view>
+            <view class="ml10">{{orderData.express_company}}</view>
+        </view>
+        <view class="flex mt20">
+            <view class="cf93">快递单号：</view>
+            <view class="ml10">{{orderData.send_number}}</view>
+        </view>
+    </view>
+    <view class="ptl30 f30 bb">
+        <view class="flexSb  f34">
+            <view>合计：</view>
+            <view class="fb cfred">￥{{orderData.total_price}}</view>
+        </view>
+        <view class="flexRight mt20">
+            <view class="cf93">商品总额</view>
+            <view class="w300" wx:if="{{orderData.order_type==2}}">积分 {{orderData.total_price}}</view>
+            <view class="w300" wx:else>￥{{orderData.total_price}}</view>
+        </view>
+        <view class="flexRight mt20">
+            <view class="cf93">+运费</view>
+            <view class="w300">￥{{orderData.send_price}}</view>
+        </view>
+    </view>
+    <button class="confirm" wx:if="{{orderData.status==2}}">确认收货</button>
+</view>

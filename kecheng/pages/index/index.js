@@ -1,4 +1,4 @@
-var api = require("../../api.js"), app = getApp(), share_count = 0, width = 260, int = 1, interval = 0, page_first_init = !0, timer = 1, msgHistory = "", fullScreen = !1;
+var api = require("../../api.js"), utils = require("../../utils/utils.js"), app = getApp(), share_count = 0, width = 260, int = 1, interval = 0, page_first_init = !0, timer = 1, msgHistory = "", fullScreen = !1;
 
 Page({
     data: {
@@ -9,6 +9,7 @@ Page({
         animationData: {},
         play: -1,
         time: 0,
+        list:[],
         buy_user: "",
         buy_address: "",
         buy_time: 0,
@@ -18,18 +19,59 @@ Page({
 	
 	
     onLoad: function(t) {
-		
-		var access_token=wx.getStorageSync("access_token");
-		console.log("access_token:"+access_token);
-		
-		if(!access_token)
-		{
-			console.log("跳转");
-			wx.redirectTo({
-				url: "/pages/login/login"
-			});
-		}
-		
+
+        var access_token=wx.getStorageSync("access_token");
+        console.log("access_token:"+access_token);
+
+        if(!access_token)
+        {
+            console.log("跳转");
+            wx.redirectTo({
+                url: "/pages/login/login"
+            });
+        }
+        else {
+            console.log("rs");
+
+            var e = this;
+            e.setData({
+                store: wx.getStorageSync("store")
+            }), app.request({
+                url: api.user.index,
+                success: function(n) {
+
+                    console.log(n.data.user_info);
+
+                    if (0 == n.code) {
+
+                        console.log(n.data.user_info.binding);
+
+
+
+                        wx.setStorageSync("pages_user_user", n.data);
+                        wx.setStorageSync("share_setting", n.data.share_setting);
+                        wx.setStorageSync("user_info", n.data.user_info);
+
+
+                        if(!n.data.user_info.binding)
+                        {
+
+                            wx.navigateTo({
+                                url: "/pages/bangding/bangding"
+                            })
+
+
+                        }
+
+
+                    }
+                }
+            });
+
+
+
+
+        }
 		
 		
         app.pageOnLoad(this, t), this.loadData(t);
@@ -41,7 +83,52 @@ Page({
         app.loginBindParent({
             parent_id: a
         });
+
+        this.loadTopicList();
+
     },
+
+
+    loadTopicList: function(i) {
+
+        var that=this;
+
+
+        //console.log(this);
+        app.request({
+            url: api.default.topic_list,
+            data: {
+                page: 1,
+                type: 1
+            },
+            success: function (a) {
+
+                //console.log(a);
+
+
+                if(a.code==0)
+                {
+                    for(var i=0;i<a.data.list.length;i++)
+                    {
+                        //console.log(a.data.list[i].addtime);
+                        a.data.list[i].addtime=utils.formatDate(a.data.list[i].addtime*1000);
+                    }
+
+                    that.setData({
+                        list: a.data.list
+                    })
+
+                }
+
+
+            },
+            complete: function () {
+
+            }
+        });
+
+    },
+
     suspension: function() {
         var n = this;
         interval = setInterval(function() {

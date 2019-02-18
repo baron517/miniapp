@@ -1,0 +1,35 @@
+<view>
+    <view class="flexSa plr20 f30 orderTitle">
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='1'?'currentIndex':''}}" data-index="1">全部</view>
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='2'?'currentIndex':''}}" data-index="2">进行中</view>
+        <view bindtap="changeIndex" class="cd515151 plr20 {{currentIndex=='3'?'currentIndex':''}}" data-index="3">已结束</view>
+    </view>
+    <view class="block"></view>
+    <view class="mian" wx:if="{{project}}">
+        <view bindtap="intoProjectDetail" class="list_wrapper" data-id="{{item.id}}" wx:for="{{project}}">
+            <view class="pic_wrapper">
+                <image class="item_pic" src="{{item.cover}}"></image>
+                <view class="iconfont icon-hot sign" style="color: {{farmSetData.background_color}}" wx:if="{{item.is_hot==1}}"></view>
+            </view>
+            <view class="desc_wrapper">
+                <view class="item_name">{{item.project_name}}</view>
+                <view class="raise_wrapper">
+                    <view style="color: {{farmSetData.background_color}}" wx:if="{{item.progress>=100}}">众筹成功</view>
+                    <view style="color: {{farmSetData.background_color}}" wx:else>已筹:￥{{item.fund_money}}</view>
+                    <view>{{item.progress}}%</view>
+                </view>
+                <view class="progress_wrapper">
+                    <view class="progress_view" style="width: {{item.progress}}%; background:{{farmSetData.background_color}}"></view>
+                </view>
+                <view class="price_wrapper">超值档:
+                    <text>￥{{item.low_price}}</text> 起</view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="noOrder">
+            <image src="../../../images/icon/fish.png"></image>
+            <view>您还没有相关的项目</view>
+        </view>
+    </view>
+</view>

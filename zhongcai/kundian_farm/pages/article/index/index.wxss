@@ -1,0 +1,129 @@
+@import "../../../components/headline/headline.wxss";
+
+page {
+    font-size: 28rpx;
+    background: #f4f4f4;
+}
+
+.scroll-view {
+    height: 109rpx;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+.scrollView {
+    white-space: nowrap;
+    display: flex;
+    font-size: 30rpx;
+    height: 150rpx;
+}
+
+.item {
+    width: 150rpx;
+    text-align: center;
+    padding: 32rpx 0rpx;
+    display: inline-block;
+    color: #3a3a3a;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item::before {
+    content: '';
+    display: block;
+    width: 30%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.actives {
+    color: #fc8535;
+}
+
+.actives::before {
+    width: 100%;
+    left: 0%;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.item:not(:last-child) view {
+    border-right: 1rpx solid #dfdfdf;
+}
+
+.block {
+    width: 100%;
+    height: 5rpx;
+    background: #f4f4f4;
+}
+
+.aritcle-con {
+    width: 100%;
+    background: white;
+}
+
+.mt {
+    margin-top: 112rpx;
+}
+
+.aritcle-con .ul {
+    width: 100%;
+    height: 220rpx;
+    padding-top: 20rpx;
+}
+
+.ul .title {
+    width: 100%;
+    height: 100rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    margin-top: 20rpx;
+    line-height: 50rpx;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    letter-spacing: 4rpx;
+}
+
+.aritcle-con .ul .view-count {
+    width: 96%;
+    margin-left: 2%;
+    color: gray;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin-top: 20rpx;
+}
+
+.a-left {
+    width: 28%;
+    float: left;
+    height: 200rpx;
+    margin-left: 2%;
+}
+
+.a-left image {
+    width: 100%;
+    height: 100%;
+}
+
+.a-right {
+    width: 66%;
+    float: left;
+    padding-left: 20rpx;
+}
+
+.v-count {
+    font-size: 24rpx;
+    position: relative;
+    top: -6rpx;
+}

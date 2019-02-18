@@ -100,6 +100,16 @@
                 <navigator style="font-size: 0" url="/pages/goods/goods?id={{item.goods_id}}">
                     <image mode="aspectFill" src="{{item.goods_pic}}" style="width: 156rpx;height: 156rpx"></image>
                 </navigator>
+
+                <navigator class="flex-y-center refund-btn" url="/pages/order-video/video-list?url={{item.od_url}}" wx:if="{{item.pay_type==3}}">
+                    立即观看
+                </navigator>
+
+                <navigator class="flex-y-center refund-btn" url="/pages/order-refund/order-refund?id={{item.pay_type}}" wx:if="{{item.pay_type==2}}">
+                    立即收听
+                </navigator>
+
+
             </view>
             <view class="flex-grow-1" style="padding-left: 20rpx">
                 <view style="margin-bottom: 10rpx">
@@ -117,9 +127,17 @@
                     </view>
                 </view>
                 <view style="color:#ff4544;text-align:right;font-size:9pt" wx:if="{{item.is_level==1}}">享受会员折扣</view>
+
+
+
+
                 <view wx:if="{{item.order_refund_enable==1}}">
+
+
+
+
                     <navigator class="flex-y-center refund-btn" url="/pages/order-refund/order-refund?id={{item.order_detail_id}}" wx:if="{{item.is_order_refund==0}}">申请售后
-          </navigator>
+                    </navigator>
                     <text class="refund-text" wx:else>已申请售后</text>
                 </view>
             </view>

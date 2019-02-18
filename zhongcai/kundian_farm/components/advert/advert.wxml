@@ -1,0 +1,5 @@
+<view class="ad_wrapper">
+    <view class="ad_item" style="width:{{item.width}}%;" wx:for="{{adLists}}" wx:key="id">
+        <image bindtap="navToPage" data-linkparam="{{item.link_param}}" data-linktype="{{item.link_type}}" mode="widthFix" src="{{item.img}}"></image>
+    </view>
+</view>

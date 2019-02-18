@@ -1,0 +1,14 @@
+.info {
+    overflow-x: hidden;
+    padding-bottom: 20rpx;
+    text-align:center;
+}
+
+
+.info audio {
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+}
+

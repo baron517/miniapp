@@ -1,0 +1,30 @@
+<view class="scroll-view" wx:if="{{typeData&&typeData!=''}}">
+    <scroll-view class="scrollView bgff" scrollLeft="{{scrollLeft}}" scrollX="true">
+        <view bindtap="changeType" class="item {{typeid==0?'actives':''}}" data-typeid="0" style="color:{{typeid==0?farmSetData.background_color:''}};border-bottom:2rpx solid {{typeid==0?farmSetData.background_color:'white'}}">
+            <view>全部</view>
+        </view>
+        <view bindtap="changeType" class="item {{typeid==item.id?'actives':''}}" data-typeid="{{item.id}}" style="color:{{typeid==item.id?farmSetData.background_color:''}};border-bottom:2rpx solid {{typeid==item.id?farmSetData.background_color:'white'}}" wx:for="{{typeData}}">
+            <view>{{item.type_name}}</view>
+        </view>
+    </scroll-view>
+</view>
+<view class="aritcle-con {{typeData!=''?'mt':''}}">
+    <block wx:for="{{articleData}}" wx:for-item="val">
+        <view bindtap="intoArticleDetail" class="ul" data-aid="{{val.id}}">
+            <view class="a-left">
+                <image src="{{val.cover}}"></image>
+            </view>
+            <view class="a-right">
+                <view class="title">
+                    <text>{{val.title}}</text>
+                </view>
+                <view class="view-count">
+                    <text class="v-count ">{{val.create_time}}</text>
+                    <text class="iconfont icon-yanjing-kong f44 ml50"></text>
+                    <text class="v-count">{{val.view_count}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="block"></view>
+    </block>
+</view>

@@ -1,0 +1,86 @@
+<view>
+    <form bindsubmit="subOrder">
+        <view class="line">
+            <image src="../../../images/icon/address-line.png"></image>
+        </view>
+        <view bindtap="chooseAddr" class="flexSb ptl30 bgff">
+            <view class="iconfont icon-position positionImg"></view>
+            <view class="address" wx:if="{{name}}">
+                <view>
+                    <text>收货人：</text>
+                    <text>{{name}}</text>
+                    <text>{{phone}}</text>
+                </view>
+                <view class="cf93 mt10">{{address}}</view>
+            </view>
+            <view class="address" wx:else>请填写收货地址</view>
+            <view class="iconfont icon-right right"></view>
+        </view>
+        <view class="bgff p30 mt20 bb">
+            <view class="flex ptb20">
+                <image class="headImg" src="{{proDetail.cover}}"></image>
+                <view class="ml20">
+                    <view class="itemName">{{proDetail.project_name}}</view>
+                    <view class="f26 mt10 cf93">
+                        <text>档位:</text>
+                        <text class="ml10">{{spec.price}}</text>
+                    </view>
+                    <view>
+                        <text class="f26">￥{{spec.price}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="p30 flexSb bgff bb">
+            <view>
+                <text class="f30">订单合计：</text>
+            </view>
+            <view class="f32" style="color: {{farmsetData.background_color}}">￥{{total_price}}</view>
+        </view>
+        <view class="p30 flex bgff bb" style="font-size:28rpx;">
+            <view>
+                <text class="f30">项目回报：</text>
+            </view>
+            <radio-group bindchange="radioChange" class="radio-group" wx:if="{{funding_set.is_open_funding_share_bonus==1}}">
+                <label class="radio">
+                    <radio name="pro_return" value="1"></radio>投资分红
+                </label>
+                <label class="radio">
+                    <radio checked name="pro_return" value="2"></radio>众筹实物
+                </label>
+            </radio-group>
+            <radio-group bindchange="radioChange" class="radio-group" wx:else>
+                <label class="radio">
+                    <radio checked name="pro_return" value="2"></radio>众筹实物
+                </label>
+            </radio-group>
+        </view>
+        <view class="p30 flexSb bgff bb">
+            <view>
+                <text class="f30">项目回报详情：</text>
+                <text class="f30">{{return_desc}}</text>
+            </view>
+        </view>
+        <view class="p30 bgff flexCenter">
+            <textarea autoHeight class="message" maxlength="-1" name="remark" placeholder="有什么相对商家说的可以写在这里哦~" placeholderClass="f26" type="text"></textarea>
+        </view>
+        <view class="notice">
+            <view class="notice_title">风险说明:</view>
+            <view class="notice_inner">
+                <view wx:for="{{funding_set.funding_risk_desc}}">
+                    {{item}}
+                </view>
+            </view>
+        </view>
+        <view class="footer_block"></view>
+        <view class="footer" style="color: {{farmsetData.background_color}};">
+            <view class="flex">
+                <view class="f24 ml30">￥</view>
+                <view class="f36">{{total_price}}</view>
+            </view>
+            <view class="payfor" style="background-color:{{farmsetData.background_color}};">
+                <button class="payfor" formType="submit" style="background-color:{{farmsetData.background_color}};">去支付</button>
+            </view>
+        </view>
+    </form>
+</view>

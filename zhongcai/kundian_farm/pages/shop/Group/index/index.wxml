@@ -1,0 +1,21 @@
+<view>
+    <view class="groupItem" wx:for="{{goodsData}}" wx:key="id">
+        <image bindtap="intoGroupDetail" class="proImg" data-goodsid="{{item.id}}" mode="aspectFill" src="{{item.cover}}"></image>
+        <view class="plr20 fb f32 ling50">{{item.goods_name}}</view>
+        <view class="plr20 mt20 flexSb f30" wx:if="{{item.group}}">
+            <view>
+                <image class="headImg" src="{{item}}" wx:for="{{item.group}}"></image>
+            </view>
+            <view class="cf93">{{item.group.length}}人已参与</view>
+        </view>
+        <view class="flexSb plr20 mt20 mb20">
+            <view>
+                <text class="f40 fb" style="color:red">￥{{item.min_price}}~</text>
+                <text class="f40 fb" style="color:red">￥{{item.max_price}}</text>
+            </view>
+            <view></view>
+            <button class="joinBtn" style="background:{{farmSetData.background_color}}" wx:if="{{item.group}}">立即参与</button>
+            <button bindtap="intoGroupDetail" class="joinBtn" data-goodsid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:else>立即开团</button>
+        </view>
+    </view>
+</view>

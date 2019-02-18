@@ -1,0 +1,396 @@
+<view wx:if="{{!loading}}">
+    <view wx:if="{{setData.is_open_custom_page!=1}}">
+        <view bindtap="issues" class="issue" wx:if="{{setData.is_open_problem==1}}">
+            <view wx:if="{{setData.problem_icon}}">
+                <image class="iconSize" src="{{setData.problem_icon}}"></image>
+            </view>
+            <view wx:else>
+                <text class="iconfont icon-issue f44" style="color:white;"></text>
+            </view>
+        </view>
+        <swiper autoplay="true" circular="true" class="swiperS" duration="1000" indicatorActiveColor="#ffffff" indicatorColor="#afafaf" indicatorDots="{{true}}" interval="3000">
+            <swiper-item wx:for="{{imgList}}" wx:key="id">
+                <image bindtap="intoDetailSlide" class="slide-image" data-index="{{index}}" data-linkparam="{{item.link_param}}" data-linktype="{{item.link_type}}" data-src="{{item}}" mode="aspectFill" src="{{item.slide_src}}"></image>
+            </swiper-item>
+        </swiper>
+        <view bindtap="intoArticle" class="f30 plr30 flexSb  article-info" wx:if="{{articleData!=''}}">
+            <text class="iconfont icon-guangbo-copy f44" style="color:{{setData.background_color}}"></text>
+            <swiper autoplay="true" circular="true" duration="500" indicatorDots="{{indicatorDots}}" interval="3000" vertical="true">
+                <swiper-item wx:for="{{articleData}}">
+                    <text>{{item.title}}</text>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="swiper_container" style="height:{{height}}rpx">
+            <swiper bindchange="change" class="swiper">
+                <swiper-item>
+                    <view class="project_container plr20">
+                        <view class="project" wx:if="{{index<8}}" wx:for="{{typeData}}">
+                            <view wx:if="{{item.url==1}}">
+                                <navigator appId="{{item.appid}}" extraData="" openType="navigate" path="" target="miniProgram" version="release">
+                                    <image src="{{item.icon}}"></image>
+                                    <view>{{item.type_name}}</view>
+                                </navigator>
+                            </view>
+                            <view bindtap="intoDetail" data-url="{{item.url}}" wx:else>
+                                <image src="{{item.icon}}"></image>
+                                <view>{{item.type_name}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+                <swiper-item wx:if="{{typeData.length>8}}">
+                    <view class="project_container plr20">
+                        <view class="project" wx:if="{{index>=8}}" wx:for="{{typeData}}">
+                            <view bindtap="intoDetail" data-url="{{item.url}}" wx:if="{{item.url==1}}">
+                                <navigator appId="{{item.appid}}" extraData="" openType="navigate" path="" target="miniProgram" version="release">
+                                    <image src="{{item.icon}}"></image>
+                                    <view>{{item.type_name}}</view>
+                                </navigator>
+                            </view>
+                            <view bindtap="intoDetail" data-url="{{item.url}}" wx:else>
+                                <image src="{{item.icon}}"></image>
+                                <view>{{item.type_name}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <view class="dots_container" wx:if="{{typeData.length>8}}">
+                <view class="{{currentIndex==index?'active':'gray'}}" wx:for="{{typeData.length/8}}"></view>
+            </view>
+        </view>
+        <view class="block20"></view>
+        <view bindtap="intoWeather" class="weather" wx:if="{{weatherSet.is_open_weather==1}}">
+            <view class="we-top">
+                <text class="du">{{weather.temperature}}°</text>
+                <text class="tianqi">{{weather.status_txt}}</text>
+                <text class="day">{{weather.date}}</text>
+                <text class="week">{{weather.week}}</text>
+                <image src="{{weather.img}}"></image>
+            </view>
+            <view class="we-btm">
+                <text class="bianhua">温度变化：{{weather.daily_data[0].min}}°~{{weather.daily_data[0].max}}°</text>
+                <text class="qulity">pm25值：{{weather.pm25}}</text>
+                <text class="feng">风力：{{weather.wind.speed}}</text>
+                <text class="shi">湿度：{{weather.humidity}}</text>
+            </view>
+        </view>
+        <view class="block20" wx:if="{{weatherSet.is_open_weather==1}}"></view>
+        <view wx:if="{{setData.is_open_coupon&&setData.is_open_coupon!=0}}">
+            <view class="coupon_container">
+                <view class="flex">
+                    <text class="iconfont icon-coupon f48" style="color:{{setData.background_color}}"></text>
+                    <view class="coupon_title" style="color:{{setData.background_color}}">专享优惠券</view>
+                </view>
+                <view bindtap="examineMoreCoupon" class="flex">
+                    <view style="color:gray;">更多</view>
+                    <text class="iconfont icon-right right-icon"></text>
+                </view>
+            </view>
+            <view class="coupons">
+                <scroll-view class="coupons_container" scrollX="true">
+                    <view bindtap="getCoupon" class="coupon_item" data-cid="{{item.id}}" data-type="{{item.type}}" wx:for="{{couponData}}" wx:key="id">
+                        <image class="voucher" src="../../../images/icon/is_get_quan.png" wx:if="{{item.is_get==1}}"></image>
+                        <image class="voucher" src="../../../images/icon/voucher.png" wx:else></image>
+                        <view class="voucher_container">
+                            <view class="voucher_desc">
+                                <view class="voucher_price">
+                                    <text class="f30">￥</text>{{item.coupon_price}}</view>
+                                <view class="condition">满{{item.low_cash_price}}元可用</view>
+                            </view>
+                            <view class="receive is-get" wx:if="{{item.is_get==1}}">
+                                <text>已</text>
+                                <text>领</text>
+                                <text>取</text>
+                            </view>
+                            <view class="receive" wx:else>
+                                <text>立</text>
+                                <text>即</text>
+                                <text>领</text>
+                                <text>取</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view class="block20" wx:if="{{setData.is_open_coupon&&setData.is_open_coupon!=0}}"></view>
+        <view bindtap="intoVetInfo" class="f30 plr30 flexSb  vet-info" wx:if="{{setData.is_open_vet==1}}">
+            <image class="doctor" src="{{setData.vet_icon}}" wx:if="{{setData.vet_icon}}"></image>
+            <image class="doctor" src="../../../images/icon/doctor.png" wx:else></image>
+            <view class="chooseColor" wx:if="{{setData.vet_title}}">{{setData.vet_title}}</view>
+            <view class="chooseColor" wx:else>团队</view>
+            <view class="more">详情</view>
+            <text class="iconfont icon-right right-icon"></text>
+        </view>
+        <view class="block20" wx:if="{{setData.is_open_vet==1}}"></view>
+        <view bindtap="intoLive" class="LiveTitle" style="color:{{setData.background_color}}" wx:if="{{setData.home_title}}">{{setData.home_title}} </view>
+        <view bindtap="intoLive" class="LiveTitle" style="color:{{setData.background_color}}" wx:else>24小时监控，看得到的健康</view>
+        <view class="liveContent" wx:if="{{homeBtm}}">
+            <view bindtap="intoBtmDetail" class="lives" data-jumpurl="{{homeBtm.plate_one.jump_url}}">
+                <image src="{{homeBtm.plate_one.icon}}"></image>
+                <view class="models">
+                    <view class="flexCenter mt30">
+                        <view class="Opiont"></view>
+                        <view class="cfff f30" wx:if="{{homeBtm.plate_one.title}}">{{homeBtm.plate_one.title}}</view>
+                        <view class="cfff f30" wx:else></view>
+                        <view class="Opiont"></view>
+                    </view>
+                    <view class="cfff f26 plr20 mt30" wx:if="{{homeBtm.plate_one.remark}}">{{homeBtm.plate_one.remark}}</view>
+                    <view class="cfff f26 plr20 mt30" wx:else></view>
+                </view>
+            </view>
+            <view class="liveS">
+                <view bindtap="intoBtmDetail" class="liveSmall" data-jumpurl="{{homeBtm.plate_two.jump_url}}">
+                    <image src="{{homeBtm.plate_two.icon}}"></image>
+                    <view class="models">
+                        <view class="flexCenter mt30">
+                            <view class="Opiont"></view>
+                            <view class="cfff f30" wx:if="{{homeBtm.plate_two.title}}">{{homeBtm.plate_two.title}}</view>
+                            <view class="cfff f30" wx:else></view>
+                            <view class="Opiont"></view>
+                        </view>
+                        <view class="cfff f26 plr20 mt10" wx:if="{{homeBtm.plate_two.remark}}">
+                            {{homeBtm.plate_two.remark}}
+                        </view>
+                        <view class="cfff f26 plr20 mt10" wx:else></view>
+                    </view>
+                </view>
+                <view bindtap="intoBtmDetail" class="liveSmall mt10" data-jumpurl="{{homeBtm.plate_three.jump_url}}">
+                    <image src="{{homeBtm.plate_three.icon}}"></image>
+                    <view class="models">
+                        <view class="flexCenter mt30">
+                            <view class="Opiont"></view>
+                            <view class="cfff f30" wx:if="{{homeBtm.plate_three.title}}">{{homeBtm.plate_three.title}}</view>
+                            <view class="cfff f30" wx:else></view>
+                            <view class="Opiont"></view>
+                        </view>
+                        <view class="cfff f26 plr20 mt10" wx:if="{{homeBtm.plate_three.remark}}">
+                            {{homeBtm.plate_three.remark}}
+                        </view>
+                        <view class="cfff f26 plr20 mt10" wx:else></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="liveContent" wx:else>
+            <view class="lives">
+                <image src="{{defaultHomeBtm[0].cover}}"></image>
+                <view class="models">
+                    <view class="flexCenter mt30">
+                        <view class="Opiont"></view>
+                        <view class="cfff f30">农场环境简介</view>
+                        <view class="Opiont"></view>
+                    </view>
+                    <view class="cfff f26 plr20 mt30">
+                        家庭农场,一个起源于欧美的舶来名词;在中国,它类似于种养大户的升级版。
+                    </view>
+                </view>
+            </view>
+            <view class="liveS">
+                <view bindtap="intoMySeed" class="liveSmall">
+                    <image src="{{defaultHomeBtm[1].cover}}"></image>
+                    <view class="models">
+                        <view class="flexCenter mt30">
+                            <view class="Opiont"></view>
+                            <view class="cfff f30">菜园状态</view>
+                            <view class="Opiont"></view>
+                        </view>
+                        <view class="cfff f26 plr20 mt10">
+                            查看自己的幼苗的成长经历
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="intoMyAnimal" class="liveSmall mt10">
+                    <image src="{{defaultHomeBtm[2].cover}}"></image>
+                    <view class="models">
+                        <view class="flexCenter mt30">
+                            <view class="Opiont"></view>
+                            <view class="cfff f30">家畜状态</view>
+                            <view class="Opiont"></view>
+                        </view>
+                        <view class="cfff f26 plr20 mt10">
+                            查看已领养的家畜
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="tags" wx:if="{{animalMine}}">
+            <view bindtap="hideAnimalModal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{animal_state}}"></view>
+            <view class="modal-dialog" wx:if="{{animal_state}}">
+                <view class="notice bb">温馨提示</view>
+                <view class="contenct bb">您有家畜可以宰杀了！</view>
+                <view class="Slaughter f30">
+                    <view bindtap="hideAnimalModal" class="br">取消</view>
+                    <view bindtap="goToAnimal">前去宰杀</view>
+                </view>
+            </view>
+        </view>
+        <view class="tags" wx:if="{{seedMine}}">
+            <view bindtap="hideModal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{state}}"></view>
+            <view class="modal-dialog" wx:if="{{state}}">
+                <view class="notice bb">温馨提示</view>
+                <view class="contenct bb">您有种植产品可以摘取了！</view>
+                <view class="Slaughter f30">
+                    <view bindtap="hideModal" class="br">取消</view>
+                    <view bindtap="goToSeed">前去查看</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <block wx:for="{{page}}">
+            <view wx:if="{{item.type=='banner'}}">
+                <slide bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent" focus="{{item.focus}}" focusColor="{{item.focusColor}}" id="slide" imgUrl="{{item.imgUrl}}" swiperHeight="{{item.swiperHeight}}"></slide>
+            </view>
+            <view wx:if="{{item.type=='navigation'}}">
+                <icon column="{{item.column}}" fontColor="{{item.fontColor}}" fontSize="{{item.fontSize}}" id="icon" list="{{item.list}}" radius="{{item.radius}}"></icon>
+            </view>
+            <view wx:if="{{item.type=='headline'}}">
+                <headline align="{{item.align}}" bgColor="{{item.bgColor}}" fontColor="{{item.fontColor}}" fontSize="{{item.fontSize}}" icon="{{item.icon}}" id="headline" link="{{item.link}}" padLr="{{item.padLr}}" padTb="{{item.padTb}}" text="{{item.text}}" wx:if="{{item.type==='headline'}}"></headline>
+            </view>
+            <view wx:if="{{item.type=='video'}}">
+                <video controls class="custom-video" poster="{{item.poster}}" src="{{item.src}}"></video>
+            </view>
+            <view wx:if="{{item.type=='pictureList'}}">
+                <pictureList column="{{item.column}}" id="pictureList" lists="{{item.lists}}" radius="{{item.radius}}" styles="{{item.styles}}"></pictureList>
+            </view>
+            <view wx:if="{{item.type=='glossary'}}">
+                <glossary bgColor="{{item.bgColor}}" id="glossary" lists="{{item.lists}}" styles="{{item.styles}}" titleColor="{{item.titleColor}}" titleSize="{{item.titleSize}}"></glossary>
+            </view>
+            <view wx:if="{{item.type=='advert'}}">
+                <advert adLists="{{item.adLists}}" height="{{item.height}}" id="advert"></advert>
+            </view>
+            <view wx:if="{{item.type=='blank'}}">
+                <blank bgColor="{{item.bgColor}}" height="{{item.height}}" id="blank"></blank>
+            </view>
+            <view wx:if="{{item.type=='search'}}">
+                <searchBox bgColor="{{item.bgColor}}" fontColor="{{item.fontColor}}" hotSearch="{{item.hotSearch}}" id="searchBox" mlr="{{item.mlr}}" mtb="{{item.mtb}}" radius="{{item.radius}}" searchColor="{{item.searchColor}}" wx:if="{{item.type==='search'}}"></searchBox>
+            </view>
+            <view wx:if="{{item.type=='line'}}">
+                <line bgColor="{{item.bgColor}}" height="{{item.height}}" id="line" lineColor="{{item.lineColor}}" lineHeight="{{item.lineHeight}}" styles="{{item.styles}}"></line>
+            </view>
+            <view wx:if="{{item.type=='fixed'}}">
+                <fixed bgColor="{{item.bgColor}}" bottom="{{item.bottom}}" id="fixed" img="{{item.img}}" opacity="{{item.opacity}}"></fixed>
+            </view>
+            <view style="text-algin:center" wx:if="{{item.type=='audio'}}">
+                <audio controls loop author="{{item.author}}" id="myAudio" name="{{item.name}}" poster="{{item.poster}}" src="{{item.src}}" style="width:80%;margin-left:10%;"></audio>
+            </view>
+            <view wx:if="{{item.type=='coupon'}}">
+                <coupon couponData="{{item.couponData}}" id="coupon"></coupon>
+            </view>
+            <view wx:if="{{item.type=='weather'}}">
+                <view bindtap="intoWeather" class="weather">
+                    <view class="we-top">
+                        <text class="du">{{weather.temperature}}°</text>
+                        <text class="tianqi">{{weather.status_txt}}</text>
+                        <text class="day">{{weather.date}}</text>
+                        <text class="week">{{weather.week}}</text>
+                        <image src="{{weather.img}}"></image>
+                    </view>
+                    <view class="we-btm">
+                        <text class="bianhua">温度变化：{{weather.daily_data[0].min}}°~{{weather.daily_data[0].max}}°</text>
+                        <text class="qulity">pm25值：{{weather.pm25}}</text>
+                        <text class="feng">风力：{{weather.wind.speed}}</text>
+                        <text class="shi">湿度：{{weather.humidity}}</text>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{item.type=='information'}}">
+                <article id="article" list="{{item.articleData}}" text="995995"></article>
+            </view>
+            <view wx:if="{{item.type=='team'}}">
+                <view bindtap="intoVetInfo" class="f30 plr30 flexSb  vet-info">
+                    <image class="doctor" src="{{setData.vet_icon}}" wx:if="{{setData.vet_icon}}"></image>
+                    <image class="doctor" src="../../../images/icon/doctor.png" wx:else></image>
+                    <view class="chooseColor" wx:if="{{setData.vet_title}}">{{setData.vet_title}}</view>
+                    <view class="chooseColor" wx:else>团队</view>
+                    <view class="more">详情</view>
+                    <text class="iconfont icon-right right-icon"></text>
+                </view>
+            </view>
+            <view wx:if="{{item.type=='btnclounm'}}">
+                <view class="liveContent" wx:if="{{homeBtm}}">
+                    <view bindtap="intoBtmDetail" class="lives" data-jumpurl="{{homeBtm.plate_one.jump_url}}">
+                        <image src="{{homeBtm.plate_one.icon}}"></image>
+                        <view class="models">
+                            <view class="flexCenter mt30">
+                                <view class="Opiont"></view>
+                                <view class="cfff f30" wx:if="{{homeBtm.plate_one.title}}">{{homeBtm.plate_one.title}}</view>
+                                <view class="cfff f30" wx:else></view>
+                                <view class="Opiont"></view>
+                            </view>
+                            <view class="cfff f26 plr20 mt30" wx:if="{{homeBtm.plate_one.remark}}">{{homeBtm.plate_one.remark}}</view>
+                            <view class="cfff f26 plr20 mt30" wx:else></view>
+                        </view>
+                    </view>
+                    <view class="liveS">
+                        <view bindtap="intoBtmDetail" class="liveSmall" data-jumpurl="{{homeBtm.plate_two.jump_url}}">
+                            <image src="{{homeBtm.plate_two.icon}}"></image>
+                            <view class="models">
+                                <view class="flexCenter mt30">
+                                    <view class="Opiont"></view>
+                                    <view class="cfff f30" wx:if="{{homeBtm.plate_two.title}}">{{homeBtm.plate_two.title}}</view>
+                                    <view class="cfff f30" wx:else></view>
+                                    <view class="Opiont"></view>
+                                </view>
+                                <view class="cfff f26 plr20 mt10" wx:if="{{homeBtm.plate_two.remark}}">
+                                    {{homeBtm.plate_two.remark}}
+                                </view>
+                                <view class="cfff f26 plr20 mt10" wx:else></view>
+                            </view>
+                        </view>
+                        <view bindtap="intoBtmDetail" class="liveSmall mt10" data-jumpurl="{{homeBtm.plate_three.jump_url}}">
+                            <image src="{{homeBtm.plate_three.icon}}"></image>
+                            <view class="models">
+                                <view class="flexCenter mt30">
+                                    <view class="Opiont"></view>
+                                    <view class="cfff f30" wx:if="{{homeBtm.plate_three.title}}">{{homeBtm.plate_three.title}}</view>
+                                    <view class="cfff f30" wx:else></view>
+                                    <view class="Opiont"></view>
+                                </view>
+                                <view class="cfff f26 plr20 mt10" wx:if="{{homeBtm.plate_three.remark}}">
+                                    {{homeBtm.plate_three.remark}}
+                                </view>
+                                <view class="cfff f26 plr20 mt10" wx:else></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<view wx:if="{{loading}}">
+    <view class="swiperS defaultColor"></view>
+    <view class="swiper_container" style="height:180rpx">
+        <swiper class="swiper">
+            <swiper-item>
+                <view class="project_container plr20">
+                    <view class="project" wx:for="{{mockView}}">
+                        <view class="mock_img"></view>
+                        <view class="mock_desc"></view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="weather">
+        <view class="we-top defaultColor"></view>
+        <view class="we-btm defaultColor"></view>
+    </view>
+    <view>
+        <view class="coupon_containers defaultColor"></view>
+        <view class="coupons_containers defaultColor"></view>
+    </view>
+    <view class="LiveTitless defaultColor"></view>
+    <view class="liveContent">
+        <view class="lives defaultColor"></view>
+        <view class="liveS">
+            <view class="liveSmall defaultColor"></view>
+            <view class="liveSmall mt10 defaultColor"></view>
+        </view>
+    </view>
+</view>

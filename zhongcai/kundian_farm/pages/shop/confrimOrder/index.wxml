@@ -1,0 +1,97 @@
+<view>
+    <form bindsubmit="subOrder">
+        <view class="address-line">
+            <image src="../../../images/icon/address-line.png"></image>
+        </view>
+        <view bindtap="chooseAddress" class="flexSb ptl30 bgff">
+            <text class="iconfont icon-position f44" style="color:gray;"></text>
+            <view class="address" wx:if="{{address}}">
+                <view>
+                    <text>收货人：</text>
+                    <text>{{userName}}</text>
+                    <text>{{phone}}</text>
+                </view>
+                <view class="cf93 mt10">{{address}}</view>
+            </view>
+            <view class="address" wx:else>请填写收货地址</view>
+            <text class="iconfont icon-right right-icon"></text>
+        </view>
+        <view class="bgff p30 mt20 bb" wx:if="{{goods_id}}">
+            <view class="flex ptb20">
+                <image class="headImg" src="{{specVal.spec_src}}" wx:if="{{specVal.spec_src}}"></image>
+                <image class="headImg" src="{{goodsData.cover}}" wx:else></image>
+                <view class="ml20">
+                    <view class="itemName">{{goodsData.goods_name}}</view>
+                    <view class="f26 mt10 cf93 itemspec" wx:if="{{specItem}}">
+                        <block wx:for="{{specItem}}" wx:for-item="val">
+                            <text>{{val.name}}:</text>
+                            <text class="ml10">{{val.spec_val}}  </text>
+                        </block>
+                        <text class="ml10">×{{count}}</text>
+                    </view>
+                    <view>
+                        <text class="f26" wx:if="{{specVal.price}}">￥{{specVal.price}}</text>
+                        <text class="f26" wx:else>￥{{goodsData.price}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="space-btm">
+            <view class="bgff p30 mt20 bb" wx:if="{{cartData!=''}}">
+                <view class="flex ptb20 goods-li" wx:for="{{cartData}}" wx:key="id">
+                    <image class="headImg" src="{{item.cover}}"></image>
+                    <view class="ml20 goods-li-list">
+                        <view class="itemName">{{item.goods_name}}</view>
+                        <view class="f26 mt10 cf93">
+                            <block wx:for="{{item.specItem}}" wx:for-item="val">
+                                <text>{{val.name}}:</text>
+                                <text class="ml10">{{val.spec_val}} </text>
+                            </block>
+                            <text class="ml10">X{{item.count}} </text>
+                        </view>
+                        <view>
+                            <text class="f26">￥{{item.price}}</text>
+                            <text class="item-price" style="color:{{farmSetData.background_color}}">￥{{item.item_price}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="p30 flexSb bgff bb">
+                <view>
+                    <text class="f30">快递运费</text>
+                </view>
+                <view class="f32 cfred" style="color:{{farmSetData.background_color}}" wx:if="{{send_price!=0}}">￥{{send_price}}</view>
+                <view class="f32" wx:else>免运费</view>
+            </view>
+            <view class="p30 flexSb bgff bb">
+                <view>
+                    <text class="f30">订单合计(含运费)</text>
+                </view>
+                <view class="f32 cfred" style="color:{{farmSetData.background_color}}">￥{{totalPrice}}</view>
+            </view>
+            <view class="p30 flexSb bgff bb">
+                <view>
+                    <text class="f30">优惠券：</text>
+                </view>
+                <view bindtap="selectCoupon" class="f32 flex" wx:if="{{couponCount>0}}">
+                    <view class="cfred" wx:if="{{userCoupon!=''}}">-￥{{userCoupon.coupon.coupon_price}}</view>
+                    <view class="cfred" wx:else>{{couponCount}}张优惠券可用</view>
+                    <text class="iconfont icon-right right-icon"></text>
+                </view>
+                <view class="f32 flex" wx:else>
+                    <view class="cf93">暂无优惠券</view>
+                </view>
+            </view>
+            <view class="p30 bgff flexCenter">
+                <input class="message" name="remark" placeholder="有什么想对商家说的可以写在这里哦~" placeholderClass="f26" type="text"></input>
+            </view>
+        </view>
+        <view class="footer" style="color:{{farmSetData.background_color}}">
+            <view class="f24 ml30">￥</view>
+            <view class="f36 ml10">{{totalPrice}}</view>
+            <view class="payfor" style="background:{{farmSetData.background_color}}">
+                <button formType="submit" style="background:{{farmSetData.background_color}}">去支付</button>
+            </view>
+        </view>
+    </form>
+</view>

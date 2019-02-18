@@ -1,4 +1,4 @@
-var _api_root = "https://kc.pro.youzewang.com/web/index.php?store_id=1&r=api/", api = {
+var _api_root = "https://cnds.cnderui.com/web/index.php?store_id=1&r=api/", api = {
     index: _api_root + "default/index",
     default: {
         store: _api_root + "default/store",

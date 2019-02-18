@@ -1,0 +1,7 @@
+<view>
+    <swiper autoplay="true" indicatorActiveColor="{{focusColor}}" indicatorDots="{{focus}}" style="height:{{swiperHeight}}px;">
+        <swiper-item wx:for="{{imgUrl}}" wx:key="id">
+            <image bindtap="intoDetailSlide" data-linkparam="{{item.link_param}}" data-linktype="{{item.link_type}}" src="{{item.slide_src}}" style="height:{{swiperHeight}}px; width:100%;"></image>
+        </swiper-item>
+    </swiper>
+</view>

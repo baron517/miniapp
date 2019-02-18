@@ -1,0 +1,18 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "首页",
+    "usingComponents": {
+        "slide": "/kundian_farm/components/slide/slide",
+        "icon": "/kundian_farm/components/icon/icon",
+        "headline": "/kundian_farm/components/headline/headline",
+        "pictureList": "/kundian_farm/components/pictureList/pictureList",
+        "glossary": "/kundian_farm/components/glossary/glossary",
+        "blank": "/kundian_farm/components/blank/blank",
+        "searchBox": "/kundian_farm/components/searchBox/searchBox",
+        "line": "/kundian_farm/components/line/line",
+        "fixed": "/kundian_farm/components/fixed/fixed",
+        "coupon": "/kundian_farm/components/coupon/coupon",
+        "article": "/kundian_farm/components/article/article",
+        "advert": "/kundian_farm/components/advert/advert"
+    }
+}

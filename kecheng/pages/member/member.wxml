@@ -46,7 +46,8 @@
                             </swiper-item>
                         </swiper>
                     </view>
-                    <view bindtap="showDialogBtn" class="gm">￥{{buy_price}} 去购买</view>
+					<view style="height:90rpx;"></view>
+                    <view bindtap="showDialogBtn" class="gm" style="display:none;">￥{{buy_price}} 去购买</view>
                     <view bindtap="hideModal" catchtouchmove="preventTouchMove" class="modal-mask" wx:if="{{showModal}}"></view>
                     <view class="modal-dialog" wx:if="{{showModal}}">
                         <view class="modal-footer">

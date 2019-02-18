@@ -103,6 +103,9 @@
         "navigationBarTextStyle": "black",
         "backgroundColor": "#EFEFF4"
     },
+	"navigateToMiniProgramAppIdList": [
+          "wxd09d36233747f3d0"
+     ],
     "subPackages": [
         {
             "root": "mch/",

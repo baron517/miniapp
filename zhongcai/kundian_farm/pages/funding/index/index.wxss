@@ -1,0 +1,115 @@
+@import "../../../components/headline/headline.wxss";
+
+.mian {
+    width: 94%;
+    margin: 0 auto;
+    background: white;
+}
+
+.orderTitle {
+    height: 90rpx;
+    line-height: 90rpx;
+    background-color: #fff;
+}
+
+.block {
+    background: #f4f4f4;
+    width: 100%;
+    height: 20rpx;
+}
+
+.list_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+}
+
+.list_wrapper:not(:last-child) {
+    border-bottom: 1rpx solid #eee;
+}
+
+.pic_wrapper {
+    width: 250rpx;
+    height: 188rpx;
+    position: relative;
+}
+
+.pic_wrapper .item_pic {
+    width: 250rpx;
+    height: 188rpx;
+    border-radius: 15rpx;
+}
+
+.sign {
+    position: absolute;
+    font-size: 40rpx;
+    top: -15rpx;
+    right: -10rpx;
+}
+
+.desc_wrapper {
+    flex: 1;
+    margin-left: 20rpx;
+    color: #3E3E3E;
+}
+
+.item_name {
+    font-size: 32rpx;
+}
+
+.raise_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    margin-top: 30rpx;
+}
+
+.progress_wrapper {
+    margin-top: 15rpx;
+    width: 100%;
+    height: 10rpx;
+    border-radius: 5rpx;
+    background: #EDEDED;
+    position: relative;
+}
+
+.progress_view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10rpx;
+    border-radius: 5rpx;
+    transition: width .3s;
+}
+
+.price_wrapper {
+    font-size: 30rpx;
+    margin-top: 10rpx;
+}
+
+.price_wrapper text {
+    color: #ff0000;
+    font-size: 32rpx;
+}
+
+.currentIndex {
+    border-bottom: 3rpx solid #16BA63;
+    color: #16BA63;
+}
+
+.noOrder {
+    width: 100%;
+    margin-top: 200rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #8B8B8B;
+    letter-spacing: 3rpx;
+}
+
+.noOrder image {
+    width: 300rpx;
+    height: 300rpx;
+}

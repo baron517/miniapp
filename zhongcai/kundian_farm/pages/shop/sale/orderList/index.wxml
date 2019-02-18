@@ -1,0 +1,158 @@
+<view>
+    <view class="flexSa plr20 f30 orderTitle">
+        <view bindtap="changeIndex" class="cd515151" data-index="0" style="color:{{currentIndex=='0'?farmSetData.background_color:''}};">全部</view>
+        <view bindtap="changeIndex" class="cd515151" data-index="1" style="color:{{currentIndex=='1'?farmSetData.background_color:''}};">待发货</view>
+        <view bindtap="changeIndex" class="cd515151" data-index="2" style="color:{{currentIndex=='2'?farmSetData.background_color:''}};">已发货</view>
+        <view bindtap="changeIndex" class="cd515151" data-index="3" style="color:{{currentIndex=='3'?farmSetData.background_color:''}};">已完成</view>
+        <view bindtap="changeIndex" class="cd515151" data-index="4" style="color:{{currentIndex=='4'?farmSetData.background_color:''}};">已取消</view>
+    </view>
+    <view class="block"></view>
+    <view wx:if="{{type==1}}">
+        <view class="mainBody" wx:for="{{orderData}}" wx:key="id">
+            <view class="ptl30">
+                <view class="flexSb mb40">
+                    <view class="flex">
+                        <image class="avator" src="{{item.avatar}}"></image>
+                        <view class="ml20 f30">{{item.nickname}}</view>
+                    </view>
+                    <view style="color:{{farmSetData.background_color}}">
+                        <view class="itemType">{{item.status_txt}}
+            <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==3}}"></text>
+                            <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==5}}"></text>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="intoOrderDetail" data-orderid="{{item.id}}" data-status="{{item.status}}">
+                    <view class="flex mt20 brb" wx:for="{{item.orderDetail}}" wx:for-item="detail">
+                        <image class="HeadImg" src="{{detail.cover}}"></image>
+                        <view class="ml20">
+                            <view class="itemName" wx:if="{{item.order_type==0}}">{{detail.goods_name}}</view>
+                            <view class="itemName" wx:else>{{item.body}}</view>
+                            <view class="flex mt10 f28 cf93">
+                                <block wx:for="{{detail.specItem}}" wx:for-item="spec">
+                                    <text>{{spec.name}}:</text>
+                                    <text class="ml10">{{spec.spec_value}}</text>
+                                </block>
+                            </view>
+                            <view class="cf93">
+                                <text class="f32 cf2b" wx:if="{{item.order_type==0}}">￥{{detail.price}}</text>
+                                <text class="f32 cf2b" wx:else>￥{{item.total_price}}</text>
+                                <text class="ml20 f26" wx:if="{{item.order_type==0}}">X{{detail.count}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btnArr">
+                <button bindtap="cancelOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status_code==0||item.status_code==4}}">取消订单</button>
+                <button bindtap="showSend" class="PayOrder" data-orderid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:if="{{item.status_code==1}}">发货</button>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{type==2}}">
+        <view class="mainBody" wx:for="{{orderData}}">
+            <view class="ptl30">
+                <view class="flexSb mb40">
+                    <view class="flex">
+                        <image class="avator" src="{{item.avatar}}"></image>
+                        <view class="ml20 f30">{{item.nickname}}</view>
+                    </view>
+                    <view style="color:{{farmSetData.background_color}}">
+                        <view class="itemType">{{item.status_txt}}
+              <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==3}}"></text>
+                            <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==5}}"></text>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="intoOrderDetail" data-orderid="{{item.id}}" data-status="{{item.status}}">
+                    <view class="flex mt20 brb" wx:for="{{item.orderDetail}}" wx:for-item="detail">
+                        <image class="HeadImg" src="{{detail.cover}}"></image>
+                        <view class="ml20">
+                            <view class="itemName">{{detail.goods_name}}</view>
+                            <view class="flex mt10 f28 cf93">
+                                <block wx:for="{{detail.specItem}}" wx:for-item="spec">
+                                    <text>{{spec.name}}:</text>
+                                    <text class="ml10">{{spec.spec_value}}</text>
+                                </block>
+                            </view>
+                            <view class="cf93">
+                                <text class="f32 cf2b">￥{{detail.price}}</text>
+                                <text class="ml20 f26">X{{detail.count}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btnArr">
+                <button bindtap="cancelGroupOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status_code==0}}">取消订单</button>
+                <button bindtap="cancelGroupOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status_code==4}}">确认退款</button>
+                <button bindtap="showSend" class="PayOrder" data-orderid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:if="{{item.status_code==1}}">发货</button>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{type==3}}">
+        <view class="mainBody" wx:for="{{orderData}}" wx:key="id">
+            <view class="ptl30">
+                <view class="flexSb mb40">
+                    <view class="flex">
+                        <image class="avator" src="{{item.avatar}}"></image>
+                        <view class="ml20 f30">{{item.nickname}}</view>
+                    </view>
+                    <view style="color:{{farmSetData.background_color}}">
+                        <view class="itemType">{{item.status_txt}}
+               <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==3}}"></text>
+                            <text bindtap="deleteOrder" class="iconfont icon-delete f34" data-orderid="{{item.id}}" style="color:gray;" wx:if="{{item.status_code==5}}"></text>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="intoOrderDetail" data-orderid="{{item.id}}" data-status="{{item.status}}">
+                    <view class="flex mt20 brb" wx:for="{{item.orderDetail}}" wx:for-item="detail">
+                        <image class="HeadImg" src="{{detail.cover}}"></image>
+                        <view class="ml20">
+                            <view class="itemName">{{detail.goods_name}}</view>
+                            <view class="flex mt10 f28 cf93">
+                                <block wx:for="{{detail.specItem}}" wx:for-item="spec">
+                                    <text>{{spec.name}}:</text>
+                                    <text class="ml10">{{spec.spec_value}}</text>
+                                </block>
+                            </view>
+                            <view class="cf93">
+                                <text class="f32 cf2b">{{detail.price}}积分</text>
+                                <text class="ml20 f26">X{{detail.count}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btnArr">
+                <button bindtap="cancelIntrgralOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status_code==0}}">取消订单</button>
+                <button bindtap="cancelIntrgralOrder" class="cancelOrder" data-orderid="{{item.id}}" wx:if="{{item.status_code==4}}">确认退款</button>
+                <button bindtap="showSend" class="PayOrder" data-orderid="{{item.id}}" style="background:{{farmSetData.background_color}}" wx:if="{{item.status_code==1}}">发货</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="send-mask" wx:if="{{is_show_send==2}}"></view>
+<view class="send-info" wx:if="{{is_show_send==2}}">
+    <form bindsubmit="sureSend">
+        <text bindtap="hideSend" class="iconfont icon-close f44 close"></text>
+        <view class="send-li">
+            <view class="li-left">
+                <text>快递公司</text>
+            </view>
+            <view class="li-right">
+                <input name="express_company" placeholder="快递公司" value="{{express_company}}"></input>
+            </view>
+        </view>
+        <view class="send-li">
+            <view class="li-left">
+                <text>快递单号</text>
+            </view>
+            <view class="li-right">
+                <input name="send_number" placeholder="快递单号" value="{{send_number}}"></input>
+            </view>
+            <text bindtap="scan" class="iconfont icon-saoma f44 scan"></text>
+        </view>
+        <button class="btn" formType="submit" style="background:{{farmSetData.background_color}}">确认发货</button>
+    </form>
+</view>
