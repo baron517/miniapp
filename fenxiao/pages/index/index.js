@@ -30,8 +30,6 @@ Page({
 			});
 		}
 		
-		
-		
         app.pageOnLoad(this, t), this.loadData(t);
         var a = 0, e = t.user_id, i = decodeURIComponent(t.scene);
         if (void 0 !== e) a = e; else if (void 0 !== i) a = i; else if (null !== app.query) {
