@@ -35,17 +35,17 @@
                         <input name="agree" style="display:none" value="{{agree}}"></input>
                         <image src="{{img}}" style="width:32rpx;height:32rpx;"></image>
                         <text style="margin-left:10rpx;">我已经阅读并了解</text>
-                        <view bindtap="agreement" style="color:#014c8c">【分销商申请协议】</view>
+                        <view bindtap="agreement" style="color:#014c8c">【代理申请协议】</view>
                     </view>
                 </view>
             </view>
             <view class="info-btn flex-row">
-                <button class="flex-y-content info-btn-content" formType="submit">申请成为分销商</button>
+                <button class="flex-y-content info-btn-content" formType="submit">申请成为代理</button>
             </view>
         </form>
         <view class="info">
             <view class="info-label flex-row">
-                <view class="flex-y-center">分销商特权</view>
+                <view class="flex-y-center">代理特权</view>
             </view>
             <view class="info-label info-height flex-row" wx:if="{{false}}">
                 <view class="flex-y-center">
@@ -62,11 +62,11 @@
                 </view>
                 <view class="info-block">
                     <view class="info-top bold">销售拿佣金</view>
-                    <view class="info-bottom">成为分销商后卖出商品，您可以获得佣金</view>
+                    <view class="info-bottom">成为代理后卖出商品，您可以获得佣金</view>
                 </view>
             </view>
             <view class="info-label info-height flex-row">
-                <view class="flex-y-center info-block">分销商的商品销售统一由厂家直接收款、直接发货，并提供产品的售后服务，分销佣金由厂家统一设置。</view>
+                <view class="flex-y-center info-block">代理的商品销售统一由厂家直接收款、直接发货，并提供产品的售后服务，代理佣金由厂家统一设置。</view>
             </view>
         </view>
     </view>

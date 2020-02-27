@@ -79,7 +79,7 @@ Page({
         1 == a.share_condition ? wx.navigateTo({
             url: "/pages/add-share/index"
         }) : 0 != a.share_condition && 2 != a.share_condition || (0 == o.is_distributor ? wx.showModal({
-            title: "申请成为分销商",
+            title: "申请成为代理",
             content: "是否申请？",
             success: function(t) {
                 t.confirm && (wx.showLoading({

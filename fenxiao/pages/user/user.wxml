@@ -173,7 +173,7 @@
                                                 <view class="flex-grow-0 flex-y-center">
                                                     <image class="option-icon" src="{{item.icon}}"></image>
                                                 </view>
-                                                <view class="flex-grow-1 flex-y-center">{{item.name_1?item.name_1:'成为分销商'}}</view>
+                                                <view class="flex-grow-1 flex-y-center">{{item.name_1?item.name_1:'成为代理'}}</view>
                                             </view>
                                             <view class="flex-grow-0 flex-y-center">
                                                 <image class="option-jisntou" src="{{__wxapp_img.store.jiantou_r.url}}"></image>
@@ -259,7 +259,7 @@
                                             </view>
                                         </view>
                                         <view>
-                                            <view class="text-more-2" style="text-align: center">{{item.name_1?item.name_1:'成为分销商'}}</view>
+                                            <view class="text-more-2" style="text-align: center">{{item.name_1?item.name_1:'成为代理'}}</view>
                                             <input class="hidden" name="input"></input>
                                             <button class="shadow-btn" formType="submit"></button>
                                         </view>

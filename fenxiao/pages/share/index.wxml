@@ -90,7 +90,7 @@
                 <image src="{{__wxapp_img.share.tip.url}}" style="width:420rpx;height:240rpx;"></image>
             </view>
         </view>
-        <view class="flex-row flex-x-center" style="padding:80rpx 0 88rpx 0;">您还不是分销商。请先提交申请！</view>
+        <view class="flex-row flex-x-center" style="padding:80rpx 0 88rpx 0;">您还不是代理。请先提交申请！</view>
         <view class="felx-row flex-x-center">
             <form bindsubmit="apply" reportSubmit="true">
                 <button class="flex-x-center flex-y-center" formType="submit" style="width:560rpx;height:80rpx;border-radius:40rpx;background-color:#ff4544;color:#fff;">立即前往</button>

@@ -60,7 +60,7 @@ Page({
                         });
                     }
                 })) : wx.showToast({
-                    title: "请先阅读并确认分销申请协议！！",
+                    title: "请先阅读并确认代理申请协议！！",
                     image: "/images/icon-warning.png"
                 });
             } else wx.showModal({
